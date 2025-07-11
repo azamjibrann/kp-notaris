@@ -1,0 +1,143 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Open Sans, sans-serif;
+}
+
+.navbar{
+    width: 100%;
+    position: relative;
+    background: white;
+}
+
+.menu{
+    float: right;
+    margin-right: 40px;
+}
+
+nav{
+    width: 100%;
+    display: flex;
+    line-height: 70px;
+    top: 0;
+    position: sticky;
+    box-shadow: 0 0 600px #02245efe;
+    z-index: 9999;
+}
+
+nav ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+nav ul li{
+    float: left;
+}
+
+nav ul li a{
+    text-align: center;
+    display: block;
+    color: black;
+    font-weight: bold;
+    padding: 0px 16px 0px 16px;
+    text-decoration: none;
+}
+
+/* nav ul li a:hover{
+    background: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+
+} */
+
+.logo img{
+    width: 60px;
+    float: left;
+    margin-left: 40px;
+}
+
+.logo a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 20px;
+    float: left;
+
+}
+
+.layar-penuh{
+    width: 100%;
+}
+
+header{
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+header video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
+
+.intro{
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.tombol{
+    text-decoration: none;
+    color: white;
+    background:#02245efe;
+    border-radius: 20px;
+    line-height: 75px;
+    font-weight: bold;
+    padding: 10px 30px 15px 30px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.tombol:hover{
+    background: rgb(97, 51, 5);
+    color: rgb(255, 255, 255);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.tbl-login{
+    background:#02245efe;
+    color: white;
+    border-radius: 20px;
+    line-height: 50px;
+    margin: 9px 5px 10px 0px;
+    padding: 0px 20px 0px 20px;
+}
+
+.tbl-login:hover{
+    background: rgb(97, 51, 5);
+    color: rgb(255, 255, 255);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+h2{
+    font-size: 50px;
+}
