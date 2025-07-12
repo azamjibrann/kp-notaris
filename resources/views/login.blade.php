@@ -10,14 +10,15 @@
 <body>
     <div class="container">
         <div class="form-box login">
-            <form action="">
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
                 <h1>Login</h1>
                 <div class="input-box">
-                    <input type="text" placeholder="Username" required>
+                    <input type="text" name="username" placeholder="Username" required>
                     <i class='bx bx-user'></i>
                 </div>
                 <div class="input-box">
-                     <input type="password" id="loginPassword" placeholder="Password" required>
+                     <input type="password" name="password" id="loginPassword" placeholder="Password" required>
                      <i class='bx bx-lock'></i>
                      <span class="toggle-password" onclick="togglePassword('loginPassword', this)">
                      <i class='bx bx-show'></i></span>
@@ -30,23 +31,25 @@
         </div>
 
         <div class="form-box register">
-            <form action="">
+            <form method="POST" action="{{ route('register') }}">
+                @csrf
                 <h1>Daftar Akun</h1>
                 <div class="input-box">
-                    <input type="text" placeholder="Username" required>
+                    <input type="text" name="username" placeholder="Username" required>
                     <i class='bx bx-user'></i>
                 </div>
                 <div class="input-box">
-                    <input type="email" placeholder="Email" required>
+                    <input type="email" name="email" placeholder="Email" required>
                     <i class='bx bx-envelope'></i>
                 </div>
                 <div class="input-box">
-                     <input type="password" id="registerPassword" placeholder="Password" required>
+                     <input type="password" name="password" id="registerPassword" placeholder="Password" required>
                      <i class='bx bx-lock'></i>
                      <span class="toggle-password" onclick="togglePassword('registerPassword', this)">
                      <i class='bx bx-show'></i></span>
                 </div>
                 <button type="submit" class="btn">Register</button>
+                @if($errors->any())<br> <ul>@foreach($errors->all() as $e)<li>{{ $e }}</li>@endforeach</ul><br>@endif
             </form>
         </div>
         <div class="toggle-box">
