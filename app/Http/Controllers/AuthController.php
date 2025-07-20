@@ -10,28 +10,28 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
     /* ============================================================
-     *  1.  FORM (satu file, dua mode)
+     *  1.  FORM LOGIN / REGISTER (1 File, 2 Mode)
      * ============================================================
     */
-    /**
-     * Tampilkan halaman auth.blade.php
-     * @param  string $mode  'login' | 'register'
-     */
     public function authPage(string $mode = 'login')
     {
-        // fallback jika mode aneh
-        if (! in_array($mode, ['login', 'register'])) {
+        if (Auth::check()) {
+            return $this->redirectByRole(Auth::user()->role);
+        }
+
+        if (!in_array($mode, ['login', 'register'])) {
             $mode = 'login';
         }
 
-        /*  View: resources/views/auth/auth.blade.php
-         *  berisi dua form, CSS‑JS Anda yang men‑toggle panel
-         */
-        return view('login', compact('mode'));
+        return response()
+            ->view('login', compact('mode'))
+            ->header('Cache-Control', 'no-cache, no-store, max-age=0, must-revalidate')
+            ->header('Pragma', 'no-cache')
+            ->header('Expires', 'Sat, 01 Jan 1990 00:00:00 GMT');
     }
 
     /* ============================================================
-     *  2.  REGISTRASI
+     *  2.  REGISTRASI (role user default)
      * ============================================================
     */
     public function register(Request $request)
@@ -42,18 +42,15 @@ class AuthController extends Controller
             'password' => 'required|string|min:6',
         ]);
 
-        // dd($validated);
-
-        $user = User::create([
+        User::create([
             'username' => $validated['username'],
             'email'    => $validated['email'] ?? null,
-            'password' => Hash::make($validated['password']), // WAJIB pakai Hash
+            'password' => Hash::make($validated['password']),
+            'role'     => 'user', // default role user
         ]);
 
         return redirect()->route('login.form')
                          ->with('success', 'Registrasi berhasil, silakan login.');
-
-        // return redirect()->intended('dashboard');
     }
 
     /* ============================================================
@@ -76,7 +73,8 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
-            return redirect()->intended('dashboard');
+
+            return $this->redirectByRole(Auth::user()->role);
         }
 
         return back()
@@ -96,5 +94,18 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         return redirect()->route('login.form');
+    }
+
+    /* ============================================================
+     *  5.  REDIRECT SESUAI ROLE
+     * ============================================================
+    */
+    protected function redirectByRole($role)
+    {
+        return match ($role) {
+            'admin' => redirect()->route('admin.dashboard'),
+            'user'  => redirect()->route('user.dashboard'),
+            default => redirect('/'), // fallback jika role tidak dikenali
+        };
     }
 }

@@ -11,8 +11,14 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        // Daftar middleware route
+       $middleware->alias([
+        'admin' => \App\Http\Middleware\IsAdmin::class,
+        'user'  => \App\Http\Middleware\IsUser::class,
+        'prevent-back-history' => \App\Http\Middleware\PreventBackHistory::class,
+    ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
-    })->create();
+    })
+    ->create();
