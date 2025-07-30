@@ -35,3 +35,19 @@ Route::middleware(['prevent-back-history'])->group(function () {
         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     });
 });
+
+Route::get('/galeri', function () {
+    return view('galeri');
+})->name('galeri');
+
+Route::get('/layanan', function () {
+    return view('layanan');
+})->name('layanan');
+
+Route::get('/tentang', function () {
+    return view('tentang');
+})->name('tentang');
+
+Route::get('/kontak', function () {
+    return view('kontak');
+})->name('kontak');

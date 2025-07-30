@@ -1,0 +1,337 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    font-family: Poppins, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    padding: 7.5px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to left, #02245E 23%, #02245E 48%, #4669B3 100%);
+}
+
+.navbar .menu {
+    border: 1px solid white;
+    border-radius: 20px;
+    padding: 8px;
+    box-shadow: 0 1px 15px rgba(255, 255, 255, 0.158);
+}
+
+.navbar .menu a {
+    padding: 20px;
+    color: #ffffff7e;
+    font-weight: 530;
+    font-size: 14px;
+}
+
+.menu a.active {
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+}
+
+
+.navbar .menu a:hover {
+    color: #ffffff;
+}
+
+.navbar .logo {
+    margin-bottom: 10px;
+}
+
+.logo img {
+    width: 60px;
+    float: left;
+    margin-left: 40px;
+}
+
+.logo a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 15px;
+    float: left;
+    margin-top: 20px;
+}
+
+.navbar .masuk {
+    margin-right: 40px;
+}
+
+.navbar .masuk a {
+    color: #02245E;
+    padding: 8px 30px;
+    background: #fffffffe;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.navbar .masuk a:hover {
+    background: #0b399c;
+    color: rgb(255, 255, 255);
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.navbar.navbar-transparent {
+    background: transparent;
+    box-shadow: none;
+}
+
+.navbar.scrolled {
+    background: linear-gradient(to left, #02245E 23%, #02245E 48%, #4669B3 100%);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.masuk-mobile {
+    display: none;
+}
+
+.masuk-dekstop {
+    display: block;
+}
+/* Akhir Nav */
+
+
+
+/* Tentang Kami */
+.container-tentang {
+    padding: 150px 20px 150px 20px;
+    box-sizing: border-box;
+    background: linear-gradient(to bottom, #02245E 73%, #4669B3 100%);
+    display: flex;
+    color: white;
+    box-shadow: 0 300px 300px -30px #4669b342;
+    position: relative;
+    z-index: 1;
+}
+
+.container-tentang .gambar {
+    flex: 0.35;
+    padding-left: 90px;
+    margin-top: 50px;
+}
+
+.container-tentang .desc-tentang {
+    flex: 1;
+}
+
+.container-tentang .desc-tentang h3 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+/* Akhiran Tentang Kami */
+
+
+
+
+/* Profil Ketua */
+.container-profil {
+    width: 100%;
+    height: 650px;
+    background-size: cover;
+    background-image: url("/img/bgketua.jpg");
+    display: flex;
+    position: relative;
+}
+
+.judul-ketua{
+    font-size: 24px;
+    height: 50px;
+    margin-top: 230px;
+    margin-left: 520px;
+    color: white;
+    position: absolute;
+}
+
+.profil-ketua {
+    box-shadow: 0 20px 15px rgba(0, 0, 0, 0.411);
+    border-radius: 10px;
+    width: 900px;
+    height: 500px;
+    display: flex;
+    margin: 300px auto 250px auto;
+    overflow: hidden;
+}
+
+.profil-teks {
+    text-align: left;
+    color: #000000;
+    font-size: 15px;
+    background: white;
+    flex: 2;
+    padding: 40px 30px 40px 30px;
+}
+
+.gambar-ketua {
+    background: linear-gradient(to bottom, #4669B3 1%, #02245E 100%);
+    flex: 2;
+}
+
+.gambar-ketua img {
+    width: 100%;
+    margin-top: -50px;
+}
+/* Akhiran Profil Ketua */
+
+
+
+
+/* Kenapa Memilih Kami */
+.container-kenapa {
+    margin-top: 150px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    height: 600px;
+}
+
+.gambar-kenapa img {
+    width: 400px;
+    margin-left: 70px;
+    margin-bottom: 50px;
+    margin-top: 100px;
+}
+
+.gambar-kenapa{
+    background-image: url('/img/kenapa.jpg');
+    flex: 1.65;
+    background-size: cover;
+}
+
+.judul-kenapa {
+    margin: 150px 50px auto;
+    font-size: 20px;
+    margin: 170px 50px auto 100p;
+}
+
+.judul-kenapa{
+    flex: 2;
+}
+
+.judul-kenapa p {
+    font-size: 19px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.judul-kenapa h3 {
+    font-size: 25px;
+    font-weight: bold;
+    color: #1e3a8a;
+    margin-bottom: 12px;
+}
+
+.list-check {
+    margin-top: 20px;
+    max-width: 800px;
+}
+
+.list-check i {
+    color: #1e3a8a;
+    line-height: 1.3;
+}
+
+.list-check p {
+    flex: 45%;
+    font-size: 19px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    text-align: justify;
+    font-family: Poppins, sans-serif;
+    line-height: 1.2;
+}
+/* Akhiran Kenapa Memilih K */
+
+
+/* Tim */
+.container-tim{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    background: linear-gradient(to bottom, #02245E 50%, #4669B3 100%);
+    box-sizing: border-box;
+}
+
+.konten-tim{
+    border-radius: 9px;
+    gap: 150px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-family: Poppins;
+    color: #02245E;
+    display: flex;
+    margin-top: 90px;
+}
+
+.tim{
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.557);
+    border-radius: 20px;
+    padding: 20px;
+    width: 220px;
+    height: 280px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-family: Poppins;
+    margin-bottom: 100px;
+    margin-top: 79px;
+    color: #02245E;
+    overflow: hidden;
+}
+
+.gambar-tima {
+    width: 235px;
+    height: 330px;
+    margin-top: -19px;
+    margin-left: -35px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.gambar-timb {
+    width: 300px;
+    height: 330px;
+    margin-top: -30px;
+    margin-left: -58px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.container-tim .text{
+    color: white;
+    position: absolute;
+    text-align: center;
+    margin-top: 70px;
+}
+
+.container-tim .text h3{
+    color: white;
+    font-size: 28px;
+}
+
+
+
+/* Akhir Tim */

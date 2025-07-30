@@ -1,0 +1,231 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    font-family: Poppins, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    padding: 7.5px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to left, #02245E 23%, #02245E 48%, #4669B3 100%);
+}
+
+.navbar .menu {
+    border: 1px solid white;
+    border-radius: 20px;
+    padding: 8px;
+    box-shadow: 0 1px 15px rgba(255, 255, 255, 0.158);
+    margin-left: 260px;
+}
+
+.navbar .menu a {
+    padding: 20px;
+    color: #ffffff7e;
+    font-weight: 530;
+    font-size: 14px;
+}
+
+.menu a.active {
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+
+.navbar .menu a:hover {
+    color: #ffffff;
+}
+
+.navbar .logo {
+    margin-bottom: 10px;
+}
+
+.logo img {
+    width: 60px;
+    float: left;
+    margin-left: 40px;
+}
+
+.logo a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 15px;
+    float: left;
+    margin-top: 20px;
+}
+
+.navbar .masuk {
+    margin-right: 40px;
+}
+
+.navbar .masuk a {
+    color: #02245E;
+    padding: 8px 30px;
+    background: #fffffffe;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.navbar .masuk a:hover {
+    background: #0b399c;
+    color: rgb(255, 255, 255);
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.navbar.navbar-transparent {
+    background: transparent;
+    box-shadow: none;
+}
+
+.navbar.scrolled {
+    background: linear-gradient(to left, #02245E 23%, #02245E 48%, #4669B3 100%);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.masuk-mobile {
+    display: none;
+}
+
+.masuk-dekstop {
+    display: block;
+}
+
+/* Akhir Nav */
+
+/* Hal Utama */
+.container-kontak {
+    width: 100%;
+    height: 585px;
+    background: linear-gradient(to bottom, #02245E 60%, #4669B3 100%);
+    display: flex;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.gambar-kontak {
+    flex: 0.67;
+    opacity: 0.7;
+    background: linear-gradient(to bottom, #02245E 60%, #4669B3 100%);
+}
+
+.gambar-kontak img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.bg-gambar {
+    align-content: center;
+    flex: 1;
+    background: linear-gradient(to bottom, #02245E 60%, #4669B3 100%);
+}
+
+/* Akhiran Hal Utama */
+/* Hubungi Kami */
+.hubungi-kami {
+    width: 300px;
+    height: 270px;
+    color: white;
+    margin-left: 250px;
+}
+
+.hubungi-kami .wg {
+    font-size: 15px;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bungkus-sosmed {
+    background: white;
+    box-shadow: 0 1px 15px rgba(255, 255, 255, 0.733);
+    width: 300px;
+    margin: 20px auto;
+    border-radius: 15px;
+
+}
+
+.sosmed {
+    padding: 13px 1px 13px 1px;
+    margin: 10px 10px;
+    border-radius: 20px;
+    display: flex;
+
+}
+
+a .sosmed.wa {
+    overflow: hidden;
+    height: 49px;
+    text-decoration: none;
+    justify-content: space-between;
+    align-items: center;
+    background: rgb(9, 89, 9);
+    margin-bottom: 30px;
+}
+
+.sosmed.wa:hover {
+    background: #0b399c;
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.sosmed.wa i {
+    padding: 20px;
+    color: white;
+}
+
+.sosmed.wa h3 {
+    color: rgb(255, 255, 255);
+    padding: 20px;
+}
+
+
+a .sosmed.gmail {
+    overflow: hidden;
+    height: 49px;
+    text-decoration: none;
+    justify-content: space-between;
+    align-items: center;
+    background: red;
+}
+
+.sosmed.gmail:hover {
+    background: #0b399c;
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.sosmed.gmail i {
+    padding: 20px;
+    color: white;
+}
+
+.sosmed.gmail h3 {
+    color: rgb(255, 255, 255);
+    padding: 20px;
+}
+
+/* Hubungi Kami */

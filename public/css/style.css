@@ -1,99 +1,129 @@
-*{
+* {
     margin: 0;
     padding: 0;
     text-decoration: none;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    font-family: Poppins, sans-serif;
 }
 
-body{
+body {
     margin: 0;
     padding: 0;
-    font-family: Open Sans, sans-serif;
+    overflow-x: hidden;
 }
 
-.navbar{
-    width: 100%;
-    position: relative;
-    background: white;
-}
-
-.menu{
-    float: right;
-    margin-right: 40px;
-}
-
-nav{
-    width: 100%;
+/* Navbar */
+.navbar {
     display: flex;
-    line-height: 70px;
-    top: 0;
-    position: sticky;
-    box-shadow: 0 0 600px #02245efe;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     z-index: 9999;
+    padding: 7.5px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to left, #02245E 23%, #02245E 48%, #4669B3 100%);
 }
 
-nav ul{
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-nav ul li{
-    float: left;
-}
-
-nav ul li a{
-    text-align: center;
-    display: block;
-    color: black;
-    font-weight: bold;
-    padding: 0px 16px 0px 16px;
-    text-decoration: none;
-}
-
-/* nav ul li a:hover{
-    background: rgb(0, 0, 0);
-    color: rgb(255, 255, 255);
+.navbar .menu {
+    border: 1px solid white;
     border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    padding: 8px;
+    box-shadow: 0 1px 15px rgba(255, 255, 255, 0.158);
+}
 
-} */
+.navbar .menu a {
+    padding: 20px;
+    color: #ffffff7e;
+    font-weight: 530;
+    font-size: 14px;
+}
 
-.logo img{
+.menu a.active {
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+}
+
+
+.navbar .menu a:hover {
+    color: #ffffff;
+}
+
+.navbar .logo {
+    margin-bottom: 10px;
+}
+
+.logo img {
     width: 60px;
     float: left;
     margin-left: 40px;
 }
 
-.logo a{
+.logo a {
     text-decoration: none;
-    color: black;
+    color: rgb(255, 255, 255);
     font-weight: bold;
     font-size: 20px;
-    margin-left: 20px;
+    margin-left: 15px;
     float: left;
-
+    margin-top: 20px;
 }
 
-.layar-penuh{
+.navbar .masuk {
+    margin-right: 40px;
+}
+
+.navbar .masuk a {
+    color: #02245E;
+    padding: 8px 30px;
+    background: #fffffffe;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.navbar .masuk a:hover {
+    background: #0b399c;
+    color: rgb(255, 255, 255);
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.masuk-mobile {
+    display: none;
+}
+
+.masuk-dekstop {
+    display: block;
+}
+
+/* Akhir Nav */
+
+
+/* Hal Utama */
+.layar-penuh {
     width: 100%;
 }
 
-header{
+header {
     position: relative;
     height: 100vh;
     width: 100%;
     overflow: hidden;
 }
 
-header video{
+header video {
     position: absolute;
     top: 0;
     left: 0;
-    object-fit: cover;
+    width: 100%;
 }
 
-.intro{
+.intro {
     position: absolute;
     top: 55%;
     left: 50%;
@@ -101,43 +131,411 @@ header video{
     text-align: center;
     color: white;
     font-size: 20px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: Poppins;
 }
 
-.tombol{
-    text-decoration: none;
-    color: white;
-    background:#02245efe;
-    border-radius: 20px;
-    line-height: 75px;
+.intro h2 {
+    font-size: 35px;
+}
+
+.intro p {
+    font-size: 17px;
+    margin-top: 15px;
+}
+
+/* Akhir Hal Utama */
+
+
+
+/* Kenali Kami */
+.container-kenali {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #ffffff;
+    box-sizing: border-box;
+}
+
+.gambar img {
+    width: 400px;
+    margin-left: 70px;
+    margin-bottom: 50px;
+    margin-top: 100px;
+}
+
+.kata-gambar {
+    margin: 150px 50px auto;
+    font-size: 20px;
+    margin-top: 170px;
+    margin-right: 50px;
+    margin-bottom: auto;
+    margin-left: 100px;
+}
+
+.kata-gambar p {
+    font-size: 19px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.kata-gambar h3 {
+    font-size: 25px;
     font-weight: bold;
-    padding: 10px 30px 15px 30px;
-    cursor: pointer;
-    margin-top: 20px;
+    color: #1e3a8a;
+    margin-bottom: 20px;
 }
 
-.tombol:hover{
-    background: rgb(97, 51, 5);
+.list-check {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px 25px;
+    margin-top: 20px;
+    max-width: 800px;
+}
+
+.list-check i {
+    color: #1e3a8a;
+    line-height: 1.3;
+}
+
+.list-check p {
+    flex: 45%;
+    font-size: 19px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    text-align: justify;
+    font-family: Poppins, sans-serif;
+    line-height: 1.2;
+}
+
+.kenali-kami {
+    margin-top: 55px;
+}
+
+.kenali-kami .tbl-kenali {
+    border: 1.5px solid #1e3a8a;
+    padding: 13px 30px;
+    text-decoration: none;
+    border-radius: 25px;
+    color: #1e3a8a;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.kenali-kami .tbl-kenali:hover {
+    background: #0b399c;
     color: rgb(255, 255, 255);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
 }
 
-.tbl-login{
-    background:#02245efe;
+/* Akhir Kenali */
+
+
+/* Rumah */
+.container-rumah {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background: linear-gradient(to left, #02245E, #4669B3);
+}
+
+.gambar-rumah {
+    width: 60%;
+    height: auto;
+    overflow: hidden;
+}
+
+.gambar-rumah img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.container-rumah .isi-rumah {
+    margin-right: 20px;
+    padding: 10px 20px 20px 20px;
+    box-sizing: border-box;
+}
+
+.container-rumah .isi-rumah h3 {
+    width: 100%;
     color: white;
-    border-radius: 20px;
-    line-height: 50px;
-    margin: 9px 5px 10px 0px;
-    padding: 0px 20px 0px 20px;
+    padding: 10px 20px 10px 30px;
+    font-size: 30px;
+    margin-top: 20px;
 }
 
-.tbl-login:hover{
-    background: rgb(97, 51, 5);
-    color: rgb(255, 255, 255);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+.container-rumah .konten-rumah {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to left, #02245E, #4669B3);
+    box-shadow: -7px 0 10px rgba(123, 123, 123, 0.39);
 }
 
-h2{
-    font-size: 50px;
+.container-rumah .jalan {
+    background: rgb(255, 255, 255);
+    border-radius: 25px;
+    margin-left: 20px;
+    padding: 20px 30px 35px 10px;
 }
+
+.container-rumah p {
+    margin-left: 20px;
+}
+
+.container-rumah .jalan .desa {
+    font-size: 13px;
+    margin-left: 45px;
+}
+
+.jadwal {
+    background: rgb(255, 255, 255);
+    padding: 10px 40px;
+    border-radius: 25px;
+    width: fit-content;
+    font-size: 13px;
+    margin: 20px 0 30px 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.jadwal table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.jadwal td {
+    padding: 4px 10px;
+}
+
+.tutup {
+    color: red;
+    font-weight: bold;
+    text-align: right;
+}
+
+/* Akhir Rumah */
+
+
+
+/* Layanan Kami */
+.layanan-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+}
+
+.layanan {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 9px;
+    padding: 20px;
+    width: 350px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-family: Poppins;
+    margin-bottom: 100px;
+    color: #02245E;
+}
+
+.layanan:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+    background-image: linear-gradient(to bottom, #4669B3, #1E2D4D);
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.gambar-layanan {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    transition: box-shadow 0.3s;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.08);
+}
+
+.gambar-layanan:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.layanan h3 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.layanan p {
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+.judul-layanan {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 60px;
+    margin-bottom: 35px;
+    color: #1e3a8a;
+}
+
+/* Akhir Layanan Kami */
+
+
+/* footer */
+.container-footer {
+    width: 100%;
+    height: 270px;
+    background: #02245efe;
+    display: flex;
+    padding: 20px 20px 20px 20px;
+    justify-content: space-between;
+    box-sizing: border-box;
+    color: white;
+}
+
+.footer ul li {
+    list-style: none;
+}
+
+.footer.kiri {
+    margin-left: 50px;
+    margin-top: 50px;
+}
+
+.footer.tengah {
+    margin-right: 400px;
+}
+
+
+/* humberger */
+.hamburger {
+    display: none;
+    font-size: 28px;
+    color: white;
+    cursor: pointer;
+    z-index: 10001;
+    margin-right: 20px;
+}
+
+/* 
+
+@media (max-width: 992px) {
+    .navbar {
+        align-items: center;
+        padding: 10px;
+        position: fixed;
+    }
+    .hamburger {
+        display: block;
+        font-size: 28px;
+        color: white;
+        cursor: pointer;
+        margin-left: auto;
+        z-index: 1001;
+    }
+
+    .tbl-login {
+        border-radius: 10px;
+        border: 2px solid white;
+        background: rgba(5, 5, 5, 0.263);
+        margin-left: 10px;
+    }
+
+    .masuk-mobile {
+        display: block;
+    }
+
+    .masuk-dekstop {
+        display: none
+    }
+
+    .navbar .menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #02245E;
+        position: absolute;
+        top: 88px;
+        left: 0;
+        z-index: 1000;
+        padding: 10px 0;
+        border-radius: 9px;
+    }
+
+    .navbar .menu.show {
+        display: flex;
+    }
+
+    .navbar .masuk.show {
+        display: flex;
+    }
+
+    .navbar .menu a {
+        padding: 10px 20px;
+        width: 100%;
+        text-align: left;
+    }
+
+    .intro h2 {
+        margin-top: -380px;
+    }
+
+    .intro p {
+        font-size: 17px;
+        margin-top: 15px;
+    }
+
+    .layar-penuh {
+        width: 100%;
+    }
+
+    .container-kenali {
+        flex-direction: column;
+        align-items: center;
+        margin-top: -300px;
+    }
+
+    .gambar img {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .kata-gambar {
+        margin: 50px;
+        text-align: center;
+    }
+
+    .list-check p {
+        flex: 100%;
+        text-align: left;
+    }
+
+    .layanan-container,
+    .alasan-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .layanan,
+    .alasan {
+        width: 90%;
+    }
+
+    .footer.tengah,
+    .footer.kanan {
+        display: none;
+    }
+}
+
+ */
