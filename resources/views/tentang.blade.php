@@ -43,26 +43,32 @@
     <!-- Akhiran Nav -->
 
     <div class="container-tentang">
-        <div class="gambar" data-aos="fade-right" data-aos-delay="100" data-aos-duration="750">
-            <img src="img/manusia.png" alt="">
-        </div>
-        <div class="desc-tentang">
-            <h3 data-aos="fade-left" data-aos-delay="100" data-aos-duration="750">Tentang Kami</h3>
-            <p data-aos="fade-left" data-aos-delay="100" data-aos-duration="750">Kantor Notaris & PPAT Yanti Haryanti,
-                S.H., M.Kn. merupakan lembaga jasa hukum yang berlokasi di
-                Kabupaten
-                Tasikmalaya. Berdiri sebagai Pejabat Pembuat Akta Tanah (PPAT) sejak tahun 2019 dan resmi menjabat
-                sebagai
-                Notaris pada tahun 2023, kantor ini hadir untuk memberikan layanan hukum yang profesional, amanah, dan
-                terpercaya.</p><br>
-            <p data-aos="fade-left" data-aos-delay="100" data-aos-duration="750">Dengan pengalaman menangani berbagai
-                kebutuhan klien, mulai dari individu, instansi pemerintahan, hingga
-                perusahaan swasta, kami senantiasa menjunjung tinggi prinsip integritas, ketelitian, dan pelayanan yang
-                humanis. Selain menjalankan profesi sebagai Notaris & PPAT, Ibu Yanti Haryanti, S.H., M.Kn. juga
-                merupakan
-                seorang akademisi aktif yang mengajar di Institut Nahdlatul Ulama Tasikmalaya, memperkuat kompetensi
-                ilmiah
-                dan profesionalitas dalam setiap layanan yang diberikan.</p>
+        <div class="main-tentang">
+            <div class="gambar" data-aos="fade-right" data-aos-delay="100" data-aos-duration="750">
+                <img src="img/manusia.png" alt="">
+            </div>
+            <div class="desc-tentang">
+                <h3 data-aos="fade-left" data-aos-delay="100" data-aos-duration="750">Tentang Kami</h3>
+                <p data-aos="fade-left" data-aos-delay="100" data-aos-duration="750">Kantor Notaris & PPAT Yanti
+                    Haryanti,
+                    S.H., M.Kn. merupakan lembaga jasa hukum yang berlokasi di
+                    Kabupaten
+                    Tasikmalaya. Berdiri sebagai Pejabat Pembuat Akta Tanah (PPAT) sejak tahun 2019 dan resmi menjabat
+                    sebagai
+                    Notaris pada tahun 2023, kantor ini hadir untuk memberikan layanan hukum yang profesional, amanah,
+                    dan
+                    terpercaya.</p><br>
+                <p data-aos="fade-left" data-aos-delay="100" data-aos-duration="750">Dengan pengalaman menangani
+                    berbagai
+                    kebutuhan klien, mulai dari individu, instansi pemerintahan, hingga
+                    perusahaan swasta, kami senantiasa menjunjung tinggi prinsip integritas, ketelitian, dan pelayanan
+                    yang
+                    humanis. Selain menjalankan profesi sebagai Notaris & PPAT, Ibu Yanti Haryanti, S.H., M.Kn. juga
+                    merupakan
+                    seorang akademisi aktif yang mengajar di Institut Nahdlatul Ulama Tasikmalaya, memperkuat kompetensi
+                    ilmiah
+                    dan profesionalitas dalam setiap layanan yang diberikan.</p>
+            </div>
         </div>
     </div>
     <!-- Profil Ketua -->
