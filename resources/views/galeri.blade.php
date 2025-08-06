@@ -22,9 +22,9 @@
             <a href="{{ route('index') }}">Notaris/PPAT</a>
         </div>
 
-        <!-- <div class="hamburger" onclick="toggleMenu()">
+        <div class="hamburger" onclick="toggleMenu()">
             <i class='bx bx-menu'></i>
-        </div> -->
+        </div>
 
         <div class="menu" id="navMenu">
             <a href="{{ route('index') }}" class="{{ Request::routeIs('index') ? 'active' : '' }}">Home</a>

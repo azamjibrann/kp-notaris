@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+ {{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -38,15 +38,15 @@
                     <span class="menu">Menu</span>
                 </a>
             </div> -->
-    
+
         </div>
     </div>
     <div class="main-konten">
-        
+
                 <h2>Hallo</h2>
-         
+
         </div>
     </div>
 
 </body>
-</html>
+</html> --}}

@@ -115,9 +115,9 @@ body {
 
 /* Galeri */
 .container-galeri {
-    background: red;
+    overflow: auto;
     width: 100%;
-    height: 800px;
+    min-height: 100vh;
     background: linear-gradient(to bottom, #02245E 73%, #4669B3 100%);
     padding-top: 110px;
     display: flex;
@@ -156,3 +156,129 @@ body {
     object-fit: cover;
 }
 /* Akhiran Galeri */
+
+
+.hamburger {
+    display: none;
+    font-size: 28px;
+    color: white;
+    cursor: pointer;
+    z-index: 10001;
+    margin-right: 20px;
+}
+
+@media (max-width: 980px) {
+    .navbar {
+        padding: 5px 15px;
+    }
+
+    .logo img {
+        width: 45px;
+        margin-left: 10px;
+    }
+
+    .logo a {
+        font-size: 16px;
+        margin-left: 10px;
+        margin-top: 15px;
+    }
+
+    .navbar .menu a {
+        padding: 10px;
+        font-size: 0.8rem;
+    }
+
+    .navbar .menu {
+        padding: 0.3rem;
+    }
+
+    .navbar .masuk a {
+        padding: 6px 15px;
+        font-size: 0.8rem;
+    }
+}
+
+/* HP */
+@media (max-width: 576px) {
+    div {
+        overflow: hidden;
+    }
+
+    /* Navbar */
+    .navbar {
+        flex-direction: row;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 1px 8px;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0;
+    }
+
+    .logo img {
+        width: 45px;
+        margin-left: 0;
+    }
+
+    .logo a {
+        font-size: 16px;
+        margin-bottom: 14px;
+        margin-left: 0;
+    }
+
+    .menu.show {
+        display: flex;
+    }
+
+    .menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #02245E;
+        margin-top: 10px;
+        border-radius: 10px;
+        padding: 10px 0;
+    }
+
+    .menu a {
+        padding: 12px 20px;
+        width: 100%;
+        text-align: left;
+        color: white;
+    }
+
+    .hamburger {
+        display: block;
+        color: white;
+        cursor: pointer;
+    }
+
+    .masuk-dekstop {
+        display: none;
+    }
+
+    .masuk-mobile {
+        display: block;
+    }
+
+    /* Galeri */
+    .container-galeri{
+        display: flex;
+        justify-content: center;
+    }
+
+    .container-galeri h3{
+        font-size: 20px;
+    }
+
+    .konten-galeri{
+        flex-direction: column;
+        align-content: center;
+        margin-right: 30px;
+    }
+}

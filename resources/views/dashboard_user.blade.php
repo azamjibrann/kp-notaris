@@ -1,110 +1,175 @@
-<!DOCTYPE html>
-<html lang="id">
+ <!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard Sederhana</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: sans-serif;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <style>
+        *{
+    padding: 0;
+    margin: 0;
     }
 
-    body {
-      display: flex;
-      height: 100vh;
-      background-color: #f5f5f5;
+    .container{
+        display: flex;
+        min-height: 100vh;
     }
 
-    .sidebar {
-      width: 200px;
-      background-color: #2c3e50;
-      color: white;
-      padding: 20px;
+    .sidebar{
+        background: #02245efe;
+        width: 260px;
+        padding: 24px;
+        display: flex;
+        box-sizing: border-box;
+        float: left;
+        flex-direction: column;
     }
 
-    .sidebar h2 {
-      margin-bottom: 30px;
+    .sidebar a{
+        text-decoration: none;
     }
 
-    .sidebar ul {
-      list-style: none;
+    /* .header{
+        background-color: red;
+    } */
+
+    .header .deskripsi-header{
+        color: white;
+        font-size: 18px;
+        font-weight: 900;
+        text-align: center;
+        line-height: 20px;
+        margin-left: 10px;
+        /* background: red; */
     }
 
-    .sidebar ul li {
-      margin: 15px 0;
+    .list-item img{
+        width: 35px;
+        float: left;
+        margin-top: -8px;
+
     }
 
-    .sidebar ul li a {
-      text-decoration: none;
-      color: white;
-      transition: 0.3s;
+    .icon{
+        width: 20px;
+        padding-right: 10px;
     }
 
-    .sidebar ul li a:hover {
-      color: #1abc9c;
+    /* .list{
+        margin: 23px 0px 10px 0px;
+    } */
+
+    .main{
+        margin-top: 30px;
+
     }
 
-    .main-content {
-      flex: 1;
-      padding: 20px;
+    .main a{
+        color: white;
+        margin-left: 10px;
     }
 
-    .header {
-      background-color: #ecf0f1;
-      padding: 15px 20px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .main .dash{
+        margin-bottom: 20px;
+        color: white;
+    }
+
+    .main .list-dash{
+        border: 1.5px solid white;
+        border-radius: 20px;
+        padding: 9px 50px 9px 10px;
+        margin: 20px -10px 10px -10px;
+        box-sizing: border-box;
+    }
+
+    .list-dash a {
+        display: flex;
+        align-items: center;
+    }
+
+    .list-dash:hover{
+        background: rgb(91, 91, 91);
+        color: rgb(255, 255, 255);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
 
     .logout-btn {
-      padding: 8px 15px;
-      background-color: #e74c3c;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-size: 14px;
-      transition: background-color 0.3s;
-      cursor: pointer;
-    }
+        padding: 8px 15px;
+        background-color: #11088f;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 14px;
+        transition: background-color 0.3s;
+        cursor: pointer;
+        }
 
-    .logout-btn:hover {
-      background-color: #c0392b;
-    }
+        .logout-btn:hover {
+        background-color: #f8f8fa;
+        color: #11088f
+        }
+        .main-content {
+        flex: 1;
+        padding: 20px;
+        }
 
-    .content {
-      background-color: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-  </style>
+
+
+
+
+    </style>
 </head>
 <body>
-  <div class="sidebar">
-    <h2>MyDashboard</h2>
-    <ul>
-      <li><a href="#">Beranda</a></li>
-      <li><a href="#">Laporan</a></li>
-      <li><a href="#">Pengguna</a></li>
-      <li><a href="#">Pengaturan</a></li>
-    </ul>
-  </div>
+    <div class="container">
 
-  <div class="main-content">
-    <div class="header">
-      <h1>Selamat Datang di Dashboard</h1>
+    <div class="sidebar">
+        <div class="header">
+            <div class="list-item">
+                <a href="#">
+                    <img src="img/documents.png" alt="">
+                    <span class="deskripsi-header">NOTARIS/PPAT</span>
+                </a>
+            </div>
+        </div>
+        <div class="main">
+            <h2 class="dash">Dashboard</h2>
+            <div class="list-dash">
+                <a href="index.php">
+                    <img src="img/menu.png" alt="" class="icon">
+                    <span class="menu">Menu</span>
+                </a>
+            </div>
+            <div class="list-dash">
+                <a href="">
+                    <img src="img/jadwal.png" alt="" class="icon">
+                    <span class="jadwal">Jadwal</span>
+                </a>
+            </div>
+            <!-- <div class="list-menu">
+                <a href="">
+                    <img src="img/bunga.png" alt="" class="icon">
+                    <span class="menu">Menu</span>
+                </a>
+            </div> -->
 
-      {{-- Form Logout (POST method) --}}
-      <form action="{{ route('logout') }}" method="POST" style="margin: 0;">
-        @csrf
-        <button type="submit" class="logout-btn">Logout</button>
-      </form>
+        </div>
+    </div>
+    <div class="main-konten">
+
+                <div class="main-content">
+                    <div class="header">
+                    <h1>Selamat Datang di Dashboard</h1>
+
+                    {{-- Form Logout (POST method) --}}
+                    <form action="{{ route('logout') }}" method="POST" style="margin: 0;">
+                        @csrf
+                        <button type="submit" class="logout-btn">Logout</button>
+                    </form>
+                    </div>
+
+        </div>
     </div>
 
-    <div class="con
+</body>
+</html>

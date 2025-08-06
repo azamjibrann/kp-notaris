@@ -45,8 +45,8 @@ body {
 }
 
 .menu a.active {
-  color: rgb(255, 255, 255);
-  font-weight: bold;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
 }
 
 
@@ -100,11 +100,12 @@ body {
 .masuk-dekstop {
     display: block;
 }
+
 /* Akhir Nav */
 
 
 /* Layanan Notaris */
-.container-layanan{
+.container-layanan {
     width: 90%;
     margin: auto;
     align-items: center;
@@ -116,19 +117,19 @@ body {
     border-radius: 15px;
 }
 
-.konten-layanan{
+.konten-layanan {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
 }
 
-.container-layanan h3{
+.container-layanan h3 {
     color: #02245E;
     font-size: 25px;
     margin-bottom: 10px;
 }
 
-.pembuatan{
+.pembuatan {
     display: flex;
     background: rgb(255, 255, 255);
     margin: 10px;
@@ -140,11 +141,136 @@ body {
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 }
 
-.pembuatan p{
+.pembuatan p {
     margin: auto;
     text-align: center;
     font-weight: 550;
     color: #02245E;
     font-size: 17px;
 }
+
 /* Akhir Layanan Notaris */
+
+
+
+.hamburger {
+    display: none;
+    font-size: 28px;
+    color: white;
+    cursor: pointer;
+    z-index: 10001;
+    margin-right: 20px;
+}
+
+@media (max-width: 980px) {
+    .navbar {
+        padding: 5px 15px;
+    }
+
+    .logo img {
+        width: 45px;
+        margin-left: 10px;
+    }
+
+    .logo a {
+        font-size: 16px;
+        margin-left: 10px;
+        margin-top: 15px;
+    }
+
+    .navbar .menu a {
+        padding: 10px;
+        font-size: 0.8rem;
+    }
+
+    .navbar .menu {
+        padding: 0.3rem;
+    }
+
+    .navbar .masuk a {
+        padding: 6px 15px;
+        font-size: 0.8rem;
+    }
+}
+
+/* HP */
+
+@media (max-width: 576px) {
+
+    /* Navbar */
+    .navbar {
+        flex-direction: row;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 1px 8px;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0;
+    }
+
+    .logo img {
+        width: 45px;
+        margin-left: 0;
+    }
+
+    .logo a {
+        font-size: 16px;
+        margin-bottom: 14px;
+        margin-left: 0;
+    }
+
+    .menu.show {
+        display: flex;
+    }
+
+    .menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #02245E;
+        margin-top: 10px;
+        border-radius: 10px;
+        padding: 10px 0;
+    }
+
+    .menu a {
+        padding: 12px 20px;
+        width: 100%;
+        text-align: left;
+        color: white;
+    }
+
+    .hamburger {
+        display: block;
+        color: white;
+        cursor: pointer;
+    }
+
+    .masuk-dekstop {
+        display: none;
+    }
+
+    .masuk-mobile {
+        display: block;
+    }
+
+    /* Layanan Notaris */
+    .container-layanan {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .konten-layanan .pembuatan{
+        width: 40%;
+    }
+
+    .konten-layanan .pembuatan p{
+        font-size: 13px;
+    }
+}

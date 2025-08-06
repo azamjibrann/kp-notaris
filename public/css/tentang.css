@@ -9,10 +9,12 @@
     font-family: Poppins, sans-serif;
 }
 
-body {
+body,
+html {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    width: 100%;
 }
 
 /* Navbar */
@@ -45,8 +47,8 @@ body {
 }
 
 .menu a.active {
-  color: rgb(255, 255, 255);
-  font-weight: bold;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
 }
 
 
@@ -110,6 +112,7 @@ body {
 .masuk-dekstop {
     display: block;
 }
+
 /* Akhir Nav */
 
 
@@ -121,25 +124,38 @@ body {
     background: linear-gradient(to bottom, #02245E 73%, #4669B3 100%);
     display: flex;
     color: white;
+    height: 100vh;
     box-shadow: 0 300px 300px -30px #4669b342;
     position: relative;
     z-index: 1;
 }
 
+.main-tentang {
+    width: 100%;
+    display: flex;
+}
+
 .container-tentang .gambar {
     flex: 0.35;
-    padding-left: 90px;
-    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .container-tentang .desc-tentang {
+    width: 100%;
+    display: flex;
     flex: 1;
+    flex-direction: column;
+    margin-left: 25px;
+    justify-content: center;
 }
 
 .container-tentang .desc-tentang h3 {
     font-size: 30px;
-    margin-bottom: 10px;
+
 }
+
 /* Akhiran Tentang Kami */
 
 
@@ -149,17 +165,19 @@ body {
 .container-profil {
     width: 100%;
     height: 650px;
+    background-image: url('img/bgketua.jpg');
     background-size: cover;
-    background-image: url("/img/bgketua.jpg");
     display: flex;
     position: relative;
 }
 
-.judul-ketua{
+.judul-ketua {
     font-size: 24px;
+    display: flex;
     height: 50px;
-    margin-top: 230px;
-    margin-left: 520px;
+    top: 13rem;
+    left: 43%;
+    translate: translateX(-43%);
     color: white;
     position: absolute;
 }
@@ -192,6 +210,7 @@ body {
     width: 100%;
     margin-top: -50px;
 }
+
 /* Akhiran Profil Ketua */
 
 
@@ -215,19 +234,20 @@ body {
     margin-top: 100px;
 }
 
-.gambar-kenapa{
-    background-image: url('/img/kenapa.jpg');
+.gambar-kenapa {
+    background-image: url('img/kenapa.jpg');
     flex: 1.65;
     background-size: cover;
 }
 
 .judul-kenapa {
-    margin: 150px 50px auto;
-    font-size: 20px;
-    margin: 170px 50px auto 100p;
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+    justify-content: center;
 }
 
-.judul-kenapa{
+.judul-kenapa {
     flex: 2;
 }
 
@@ -245,7 +265,7 @@ body {
 }
 
 .list-check {
-    margin-top: 20px;
+    margin-top: 8px;
     max-width: 800px;
 }
 
@@ -264,11 +284,12 @@ body {
     font-family: Poppins, sans-serif;
     line-height: 1.2;
 }
+
 /* Akhiran Kenapa Memilih K */
 
 
 /* Tim */
-.container-tim{
+.container-tim {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -277,7 +298,7 @@ body {
     box-sizing: border-box;
 }
 
-.konten-tim{
+.konten-tim {
     border-radius: 9px;
     gap: 150px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -287,7 +308,7 @@ body {
     margin-top: 90px;
 }
 
-.tim{
+.tim {
     background-color: rgb(255, 255, 255);
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.557);
     border-radius: 20px;
@@ -320,14 +341,14 @@ body {
     border-radius: 5px;
 }
 
-.container-tim .text{
+.container-tim .text {
     color: white;
     position: absolute;
     text-align: center;
     margin-top: 70px;
 }
 
-.container-tim .text h3{
+.container-tim .text h3 {
     color: white;
     font-size: 28px;
 }
@@ -335,3 +356,228 @@ body {
 
 
 /* Akhir Tim */
+
+
+.hamburger {
+    display: none;
+    font-size: 28px;
+    color: white;
+    cursor: pointer;
+    z-index: 10001;
+    margin-right: 20px;
+}
+
+
+@media (min-width: 577px) and (max-width: 980px) {
+    .navbar {
+        padding: 5px 15px;
+    }
+
+    .logo img {
+        width: 45px;
+        margin-left: 10px;
+    }
+
+    .logo a {
+        font-size: 16px;
+        margin-left: 10px;
+        margin-top: 15px;
+    }
+
+    .navbar .menu a {
+        padding: 10px;
+        font-size: 0.8rem;
+    }
+
+    .navbar .menu {
+        padding: 0.3rem;
+    }
+
+    .navbar .masuk a {
+        padding: 6px 15px;
+        font-size: 0.8rem;
+    }
+}
+
+/* HP */
+@media (max-width: 576px) {
+    div {
+        overflow: hidden;
+    }
+
+    /* Navbar */
+    .navbar {
+        flex-direction: row;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 1px 8px;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0;
+    }
+
+    .logo img {
+        width: 45px;
+        margin-left: 0;
+    }
+
+    .logo a {
+        font-size: 16px;
+        margin-bottom: 14px;
+        margin-left: 0;
+    }
+
+    .menu.show {
+        display: flex;
+    }
+
+    .menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #02245E;
+        margin-top: 10px;
+        border-radius: 10px;
+        padding: 10px 0;
+    }
+
+    .menu a {
+        padding: 12px 20px;
+        width: 100%;
+        text-align: left;
+        color: white;
+    }
+
+    .hamburger {
+        display: block;
+        color: white;
+        cursor: pointer;
+    }
+
+    .masuk-dekstop {
+        display: none;
+    }
+
+    .masuk-mobile {
+        display: block;
+    }
+
+    /* Tentang */
+    .container-tentang {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        height: 100%;
+    }
+
+    .main-tentang {
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        align-items: center;
+        margin-top: -50px;
+    }
+
+    .main-tentang .gambar img {
+        width: 70%;
+    }
+
+    .main-tentang .desc-tentang {
+        width: 100%;
+        margin-right: 25px;
+        text-align: center;
+        font-size: 12px;
+    }
+
+    .main-tentang .desc-tentang h3 {
+        font-size: 20px;
+    }
+
+
+    /* Profile */
+    .container-profil {
+        width: 100%;
+    }
+
+    .profil-ketua {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .profil-teks {
+        padding: 15px;
+        font-size: 9px;
+        width: 100%;
+    }
+
+    .gambar-ketua img {
+        width: 100%;
+        margin-top: 110px;
+        margin-left: 3px;
+    }
+
+    .judul-ketua {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        padding: 5px 10px;
+        font-size: 15px;
+        z-index: 10;
+    }
+
+
+    /* KENAPA */
+    .container-kenapa{
+        display: flex;
+        flex-direction: column;
+        background: rgb(255, 255, 255);
+        margin: 0;
+    }
+
+    .judul-kenapa{
+        padding: 12px;
+        font-size: 10px;
+        margin: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .judul-kenapa h3{
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    .judul-kenapa p{
+        font-size: 12px;
+    }
+
+    .container-kenapa .list-check{
+        margin-top: 0;
+    }
+    /* TIM */
+
+    .konten-tim{
+        display: flex;
+        flex-direction: column;
+        padding-top: 50px;
+
+    }
+    .konten-tim .tim.dua{
+        margin-top: -150px;
+    }
+    .container-tim .text h3{
+        font-size: 25px;
+    }
+    .container-tim .text p{
+        font-size: 16px;
+        padding: 0 20px;
+    }
+}

@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PhotoController;
+use Illuminate\Http\Request;
+
 
 Route::middleware(['prevent-back-history'])->group(function () {
     Route::get('/', function () {
@@ -19,24 +22,7 @@ Route::middleware(['prevent-back-history'])->group(function () {
         Route::get('/login/{mode?}', [AuthController::class, 'authPage'])->name('login.form');
         Route::post('/login', [AuthController::class, 'login'])->name('login');
         Route::post('/register', [AuthController::class, 'register'])->name('register');
-    });
-
-    Route::middleware(['auth'])->group(function () {
-        // USER dashboard
-        Route::get('/user/dashboard', function () {
-            return view('dashboard_user');
-        })->middleware('user')->name('user.dashboard');
-
-        // ADMIN dashboard
-        Route::get('/admin/dashboard', function () {
-            return view('dashboard_admin');
-        })->middleware('admin')->name('admin.dashboard');
-
-        Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-    });
-});
-
-Route::get('/galeri', function () {
+        Route::get('/galeri', function () {
     return view('galeri');
 })->name('galeri');
 
@@ -51,3 +37,31 @@ Route::get('/tentang', function () {
 Route::get('/kontak', function () {
     return view('kontak');
 })->name('kontak');
+    });
+
+    Route::middleware(['auth'])->group(function () {
+        // USER dashboard
+        Route::get('/user/dashboard', function () {
+            return view('dashboard_user');
+        })->middleware('user')->name('user.dashboard');
+
+        // ADMIN dashboard
+        Route::get('/admin/dashboard', function () {
+            return view('dashboard_admin');
+        })->middleware('admin')->name('admin.dashboard');
+        Route::get('/admin/tbgaleri', [PhotoController::class, 'create'])
+            ->middleware('admin')
+            ->name('admin.tbgaleri');
+
+        Route::post('/admin/tbgaleri', [PhotoController::class, 'store'])
+            ->middleware('admin')
+            ->name('photos.store');
+
+        Route::get('/admin/dashboard_index', [PhotoController::class, 'index'])
+            ->middleware('admin')
+            ->name('admin.dashboard_index');
+
+        Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    });
+});
+
