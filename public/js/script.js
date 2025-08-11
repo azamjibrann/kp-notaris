@@ -69,3 +69,66 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+
+function showContent(id, event) {
+  // Sembunyikan semua konten
+  const sections = document.querySelectorAll('.content-section');
+  sections.forEach(section => section.style.display = 'none');
+
+  // Tampilkan konten yang dipilih
+  const selectedSection = document.getElementById(id);
+  if (selectedSection) {
+    selectedSection.style.display = 'block';
+  }
+
+  // Tambah efek active di sidebar
+  const listDash = document.querySelectorAll('.list-dash');
+  listDash.forEach(item => item.classList.remove('active'));
+
+  if (event && event.currentTarget) {
+    event.currentTarget.parentElement.classList.add('active');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  showContent('menu-konten'); // konten default
+});
+
+
+// Dashboard Navigation Functions
+function showContent(contentId, event) {
+    event.preventDefault();
+    
+    // Remove active class from all menu items
+    document.querySelectorAll('.menu-item').forEach(item => {
+        item.classList.remove('active');
+    });
+    
+    // Add active class to clicked menu item
+    event.currentTarget.closest('.menu-item').classList.add('active');
+    
+    // Hide all content sections
+    document.querySelectorAll('.content-section').forEach(section => {
+        section.classList.remove('active');
+    });
+    
+    // Show selected content
+    document.getElementById(contentId).classList.add('active');
+}
+
+// Initialize dashboard when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Show menu content by default
+    const menuKonten = document.getElementById('menu-konten');
+    if (menuKonten) {
+        menuKonten.classList.add('active');
+    }
+    
+    // Set first menu item as active
+    const firstMenuItem = document.querySelector('.menu-item');
+    if (firstMenuItem) {
+        firstMenuItem.classList.add('active');
+    }
+});
+
+// Add this to your existing Laravel JavaScript file

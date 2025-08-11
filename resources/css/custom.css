@@ -1,0 +1,83 @@
+.content-section {
+    display: none;
+}
+
+.content-section.active {
+    display: block;
+}
+
+.sidebar-bg {
+    background: linear-gradient(180deg, #1e3a8a 0%, #1e40af 100%);
+}
+
+.menu-item {
+    transition: all 0.3s ease;
+}
+
+.menu-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(5px);
+}
+
+.menu-item.active {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.logout-btn-custom {
+    background-color: #3730a3;
+    transition: all 0.3s ease;
+}
+
+.logout-btn-custom:hover {
+    background-color: #4338ca;
+    transform: translateY(-2px);
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+}
+
+.layanan {
+    background: white;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+}
+
+.user-icon {
+    background: #60a5fa;
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+}
+.user-iconf {
+    background: #51c56a;
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+}
+.user-iconl {
+    background: #c7c14f;
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+}
