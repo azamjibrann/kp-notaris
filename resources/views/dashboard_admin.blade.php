@@ -8,6 +8,16 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     @vite(['resources/css/app.css', 'resources/css/custom.css', 'resources/js/app.js'])
 </head>
+<style>
+    .content-section {
+  display: none; /* semua konten disembunyikan */
+}
+
+.content-section.active {
+  display: block; /* hanya yang active yang muncul */
+}
+
+</style>
 
 <body class="p-0 m-0 box-border overflow-hidden bg-gray-50">
     <div class="grid grid-cols-[280px_1fr] min-h-screen max-w-full overflow-hidden">
@@ -67,19 +77,16 @@
                     </a>
                 </div>
 
-                <div class="menu-item rounded-full border-2 border-white">
-                    <a href="#" class="flex items-center text-white no-underline px-4 py-2 rounded-full">
-                        <i class='bx bx-calendar text-sm mr-2'></i>
-                        <span class="text-sm">Tambah galeri</span>
-                    </a>
-                </div>
             </div>
 
             <!-- Logout Button -->
             <div class="mt-4">
-                <button class="logout-btn-custom text-white px-4 py-2 rounded-lg font-medium w-full text-sm">
+                <form action="{{ route('logout') }}" method="POST" style="margin: 0;">
+                    @csrf
+                    <button type="submit" class="logout-btn-custom text-white px-4 py-2 rounded-lg font-medium w-full text-sm">
                     Logout
                 </button>
+                </form>
             </div>
         </div>
 
@@ -216,25 +223,72 @@
             <div id="layanan" class="content-section mt-4">
                 <div class="flex justify-between">
                     <h1 class="text-3xl font-bold text-gray-800 mb-8">Layanan</h1>
-                    <button class="bg-blue-500 h-9 rounded-md w-48 text-white"> + Tambahkan Layanan</button>
-                </div>
-                <div class="layanan p-8">
-                    <p class="text-gray-600">Ini Adalah LAYANAN</p>
-                </div>
-                <div class="layanan p-8">
-                    <p class="text-gray-600">Ini Adalah LAYANAN</p>
-                </div>
-                <div class="layanan p-8">
-                    <p class="text-gray-600">Ini Adalah LAYANAN</p>
-                </div>
-                <div class="layanan p-8">
-                    <p class="text-gray-600">Ini Adalah LAYANAN</p>
-                </div>
-                <div class="layanan p-8">
-                    <p class="text-gray-600">Ini Adalah LAYANAN</p>
+                    <button onclick="openModal()"
+                            class="bg-blue-500 h-9 rounded-md w-48 text-white">+ Tambahkan Layanan</button>
                 </div>
 
+                {{-- LIST LAYANAN --}}
+                @foreach ($layanans as $layanan)
+                    <div class="bg-white shadow rounded p-4 mb-4">
+                        <h2 class="text-lg font-semibold">{{ $layanan->nama_layanan }}</h2>
+                        <p class="text-gray-600">{{ $layanan->deskripsi }}</p>
+                        <form action="{{ route('layanan.destroy', $layanan->id) }}" method="POST" class="mt-2">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit"
+                                    class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">
+                                Hapus
+                            </button>
+                        </form>
+                    </div>
+                @endforeach
+
+                {{-- MODAL FORM TAMBAH LAYANAN --}}
+                <div id="formModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
+                    <div class="bg-white shadow-md rounded p-6 w-full max-w-lg relative">
+                        <!-- Tombol close -->
+                        <button onclick="closeModal()"
+                                class="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-xl">&times;</button>
+
+                        <h1 class="text-2xl font-bold mb-6 text-center">Tambah Layanan</h1>
+                        <form action="{{ route('layanan.store') }}" method="POST" class="space-y-4">
+                            @csrf
+                            <div>
+                                <label for="nama_layanan" class="block font-medium mb-1">Nama Layanan</label>
+                                <input type="text" id="nama_layanan" name="nama_layanan"
+                                    class="w-full border rounded p-2 focus:outline-none focus:ring focus:border-blue-400"
+                                    placeholder="Masukkan nama layanan" required>
+                            </div>
+                            <div>
+                                <label for="deskripsi" class="block font-medium mb-1">Deskripsi</label>
+                                <textarea id="deskripsi" name="deskripsi" rows="4"
+                                        class="w-full border rounded p-2 focus:outline-none focus:ring focus:border-blue-400"
+                                        placeholder="Masukkan deskripsi layanan"></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit"
+                                        class="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                                    Simpan
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                {{-- SCRIPT DI DALAM DIV --}}
+                <script>
+                    function openModal() {
+                        document.getElementById("formModal").classList.remove("hidden");
+                        document.getElementById("formModal").classList.add("flex");
+                    }
+
+                    function closeModal() {
+                        document.getElementById("formModal").classList.remove("flex");
+                        document.getElementById("formModal").classList.add("hidden");
+                    }
+                </script>
             </div>
+
 
             <div id="profil" class="content-section">
                 <h1 class="text-3xl font-bold text-gray-800 mb-8">Profil Notaris</h1>
@@ -247,69 +301,93 @@
 
             <!-- Formulir Konsul -->
             <div id="konsul" class="content-section m-4">
-                <h1 class="text-3xl font-bold text-gray-800 mb-8">Form Konsul</h1>
-                <div class="flex justify-between">
-                    <input type="text" value="Sortir" class="border-2 h-10 p-3 rounded-md">
-                    <input type="text" class="border-2 h-10 p-3 rounded-md w-1/2 ml-24">
-                    <button class="text-white font-bold bg-blue-950 h-10 rounded-md w-40">Export</button>
+    <h1 class="text-3xl font-bold text-gray-800 mb-8">Daftar Pesanan</h1>
+
+    <div class="flex justify-between">
+        <input type="text" placeholder="Sortir" class="border-2 h-10 p-3 rounded-md">
+        <input type="text" placeholder="Cari pesanan..." class="border-2 h-10 p-3 rounded-md w-1/2 ml-24">
+        <button class="text-white font-bold bg-blue-950 h-10 rounded-md w-40">Export</button>
+    </div>
+
+    <div class="tabel">
+        <table class="w-full border border-gray-300 mt-7">
+            <thead class="bg-gray-200">
+                <tr>
+                    <th class="border px-4 py-2">#</th>
+                    <th class="border px-4 py-2">Layanan</th>
+                    <th class="border px-4 py-2">User</th>
+                    <th class="border px-4 py-2">Tanggal</th>
+                    <th class="border px-4 py-2">Alamat</th>
+                    <th class="border px-4 py-2">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($orders as $i => $item)
+                    <tr>
+                        <td class="border px-4 py-2">{{ $i+1 }}</td>
+                        <td class="border px-4 py-2">{{ $item->layanan->nama_layanan }}</td>
+                        <td class="border px-4 py-2">{{ $item->user->username }}</td>
+                        <td class="border px-4 py-2">{{ $item->tanggal }}</td>
+                        <td class="border px-4 py-2">{{ $item->alamat }}</td>
+                        <td class="border px-4 py-2">{{ ucfirst($item->status) }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
+
+            {{-- galeri --}}
+            <div id="galeri" class="content-section">
+                <div class="flex justify-between items-center mb-6">
+                    <h1 class="text-3xl font-bold text-gray-800">Galeri</h1>
+                    <button onclick="toggleForm()"
+                        class="bg-blue-500 h-9 rounded-md w-48 text-white flex items-center justify-center">
+                        <i class='bx bx-edit text-sm mr-2'></i>
+                        <span class="text-sm">+ Tambah galeri</span>
+                    </button>
                 </div>
-                <div class="tabel">
-                     <table class="table-auto border-collapse border border-gray-300 w-full mt-7">
-                            <thead class="bg-gray-100">
-                                <tr>
-                                    <th class="border border-gray-300 px-4 py-2">Nama</th>
-                                    <th class="border border-gray-300 px-4 py-2">Kontak</th>
-                                    <th class="border border-gray-300 px-4 py-2">Tujuan Konsul</th>
-                                    <th class="border border-gray-300 px-4 py-2">Tanggal</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="border border-gray-300 px-4 py-2">Azam</td>
-                                    <td class="border border-gray-300 px-4 py-2">0896167832</td>
-                                    <td class="border border-gray-300 px-4 py-2">Bandung</td>
-                                    <td class="border border-gray-300 px-4 py-2">20/08/2025</td>                                    
-                                </tr>
-                                <tr>
-                                    <td class="border border-gray-300 px-4 py-2">Jibran</td>
-                                    <td class="border border-gray-300 px-4 py-2">082374324</td>
-                                    <td class="border border-gray-300 px-4 py-2">Jakarta</td>
-                                    <td class="border border-gray-300 px-4 py-2">20/08/2025</td>
-                                </tr>
-                                <tr>
-                                    <td class="border border-gray-300 px-4 py-2">Jibran</td>
-                                    <td class="border border-gray-300 px-4 py-2">082374324</td>
-                                    <td class="border border-gray-300 px-4 py-2">Jakarta</td>
-                                    <td class="border border-gray-300 px-4 py-2">20/08/2025</td>
-                                </tr>
-                                <tr>
-                                    <td class="border border-gray-300 px-4 py-2">Jibran</td>
-                                    <td class="border border-gray-300 px-4 py-2">082374324</td>
-                                    <td class="border border-gray-300 px-4 py-2">Jakarta</td>
-                                    <td class="border border-gray-300 px-4 py-2">20/08/2025</td>
-                                </tr>
-                                <tr>
-                                    <td class="border border-gray-300 px-4 py-2">Jibran</td>
-                                    <td class="border border-gray-300 px-4 py-2">082374324</td>
-                                    <td class="border border-gray-300 px-4 py-2">Jakarta</td>
-                                    <td class="border border-gray-300 px-4 py-2">20/08/2025</td>
-                                </tr>
-                                <tr>
-                                    <td class="border border-gray-300 px-4 py-2">Jibran</td>
-                                    <td class="border border-gray-300 px-4 py-2">082374324</td>
-                                    <td class="border border-gray-300 px-4 py-2">Jakarta</td>
-                                    <td class="border border-gray-300 px-4 py-2">20/08/2025</td>
-                                </tr>
-                            </tbody>
-                        </table>
+
+                {{-- Form Tambah Galeri (hidden default) --}}
+                <form id="formGaleri" action="{{ route('photos.store') }}" method="POST" enctype="multipart/form-data"
+                    class="hidden bg-white shadow-md rounded-lg p-4 mb-6">
+                    @csrf
+                    <div class="mb-3">
+                        <input type="file" name="photo" class="border p-2 w-full rounded" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" name="judul" class="border p-2 w-full rounded" placeholder="Judul">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" name="description" class="border p-2 w-full rounded" placeholder="Deskripsi foto">
+                    </div>
+                    <button type="submit" class="bg-green-500 px-4 py-2 text-white rounded">Simpan</button>
+                </form>
+                {{-- List Galeri --}}
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    @foreach ($photos as $photo)
+                        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                            <img src="{{ asset('storage/' . $photo->image) }}" class="w-full h-40 object-cover" />
+                            <p class="p-3 text-gray-800 text-sm">{{ $photo->description }}</p>
+                        </div>
+                    @endforeach
                 </div>
             </div>
+
+            <script>
+            function toggleForm() {
+                document.getElementById("formGaleri").classList.toggle("hidden");
+            }
+            </script>
         </div>
-        <!--  -->
+        <!-- galeri -->
 
 
-        <div id="galeri" class="content-section">
-            <h1 class="text-3xl font-bold text-gray-800 mb-8">Galeri</h1>
+
+
+
+        {{-- <div id="tbgaleri" class="content-section">
+            <h1 class="text-3xl font-bold text-gray-800 mb-8">Tambah galeri</h1>
             <div class="card p-8">
                 <div class="space-y-6">
                     <!-- Photo Upload Form -->
@@ -337,7 +415,7 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
     </div>
 

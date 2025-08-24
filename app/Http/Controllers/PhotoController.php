@@ -11,7 +11,7 @@ class PhotoController extends Controller
     public function index()
     {
         $photos = Photo::latest()->get();
-        return view('dashboard_index', compact('photos'));
+        return view('dashboard_admin', compact('photos'));
     }
 
     public function create()
@@ -35,7 +35,13 @@ class PhotoController extends Controller
             'description' => $request->description
         ]);
 
-        return redirect()->route('admin.dashboard_index')->with('success', 'Foto berhasil ditambahkan!');
+        return redirect()->route('admin.dashboard')->with('success', 'Foto berhasil ditambahkan!');
+    }
+
+    // 🔹 Tambahan untuk galeri user (tanpa user_id)
+    public function userIndex()
+    {
+        $photos = Photo::latest()->get();
+        return view('user.galeri', compact('photos'));
     }
 }
-

@@ -98,20 +98,20 @@ document.addEventListener('DOMContentLoaded', function () {
 // Dashboard Navigation Functions
 function showContent(contentId, event) {
     event.preventDefault();
-    
+
     // Remove active class from all menu items
     document.querySelectorAll('.menu-item').forEach(item => {
         item.classList.remove('active');
     });
-    
+
     // Add active class to clicked menu item
     event.currentTarget.closest('.menu-item').classList.add('active');
-    
+
     // Hide all content sections
     document.querySelectorAll('.content-section').forEach(section => {
         section.classList.remove('active');
     });
-    
+
     // Show selected content
     document.getElementById(contentId).classList.add('active');
 }
@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (menuKonten) {
         menuKonten.classList.add('active');
     }
-    
+
     // Set first menu item as active
     const firstMenuItem = document.querySelector('.menu-item');
     if (firstMenuItem) {
