@@ -32,6 +32,7 @@ class OrderController extends Controller
             'tanggal'    => 'required|date',
             'alamat'     => 'required|string',
             'keterangan' => 'nullable|string',
+            'telpon'     => 'required|string',
         ]);
             // dd(Auth::id());
             // dd($request->all());
@@ -42,7 +43,7 @@ class OrderController extends Controller
             'tanggal'    => $request->tanggal,
             'alamat'     => $request->alamat,
             'keterangan' => $request->keterangan,
-            'status'     => 'pending',
+            'telpon'     => $request->telpon,
             ]);
 
         return redirect()->route('user.pesanan')

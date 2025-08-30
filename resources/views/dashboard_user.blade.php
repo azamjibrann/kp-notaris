@@ -155,13 +155,17 @@
                                     <label class="block font-semibold text-gray-700">Tanggal</label>
                                     <input type="date" name="tanggal" required class="w-full border rounded p-2">
                                 </div>
-
+                                <div class="mb-3">
+    <label class="block font-semibold text-gray-700">Telpon</label>
+    <input type="text" name="telpon" required class="w-full border rounded p-2">
+</div>
                                 {{-- Alamat --}}
                                 <div class="mb-3">
                                     <label class="block font-semibold text-gray-700">Alamat</label>
                                     <textarea name="alamat" rows="3" required
                                             class="w-full border rounded p-2"></textarea>
                                 </div>
+                                {{-- telpon --}}
 
                                 <div class="flex justify-end gap-2">
                                     <button type="button" @click="open = false"
@@ -194,7 +198,7 @@
                         document.getElementById("formModal").classList.add("hidden");
                     }
                 </script>
-                
+
                 {{-- konsul --}}
                  <div id="konsul" class="content-section m-4">
     <h1 class="text-3xl font-bold text-gray-800 mb-8">Daftar Pesanan</h1>
@@ -214,7 +218,7 @@
                     <th class="border px-4 py-2">User</th>
                     <th class="border px-4 py-2">Tanggal</th>
                     <th class="border px-4 py-2">Alamat</th>
-                    <th class="border px-4 py-2">Status</th>
+                    <th class="border px-4 py-2">Telpon</th>
                 </tr>
             </thead>
             <tbody>
@@ -225,7 +229,7 @@
                         <td class="border px-4 py-2">{{ $item->user->username }}</td>
                         <td class="border px-4 py-2">{{ $item->tanggal }}</td>
                         <td class="border px-4 py-2">{{ $item->alamat }}</td>
-                        <td class="border px-4 py-2">{{ ucfirst($item->status) }}</td>
+                        <td class="border px-4 py-2">{{ $item->telpon }}</td>
                     </tr>
                 @endforeach
             </tbody>

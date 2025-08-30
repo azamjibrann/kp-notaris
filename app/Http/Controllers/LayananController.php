@@ -13,7 +13,14 @@ class LayananController extends Controller
         $layanans = Layanan::latest()->get();
         $photos   = Photo::latest()->get(); // tambahkan ini
         $orders   = Order::with(['layanan', 'user'])->latest()->get();
-        return view('dashboard_admin', compact('layanans', 'photos', 'orders'));
+        $layananCount  = Layanan::count();
+        $orderCount    = Order::count();
+        $layananPopuler = Order::selectRaw('layanan_id, COUNT(*) as total')
+                        ->groupBy('layanan_id')
+                        ->orderByDesc('total')
+                        ->with('layanan')
+                        ->first();
+        return view('dashboard_admin', compact('layanans', 'photos', 'orders', 'layananCount', 'orderCount', 'layananPopuler'));
     }
 
     public function create()
@@ -41,5 +48,20 @@ class LayananController extends Controller
         return redirect()->route('layanan.index')->with('success', 'Layanan berhasil dihapus.');
     }
 
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'nama_layanan' => 'required|string|max:255',
+            'deskripsi'    => 'nullable|string',
+        ]);
+
+        $layanan = Layanan::findOrFail($id);
+        $layanan->update([
+            'nama_layanan' => $request->nama_layanan,
+            'deskripsi'    => $request->deskripsi,
+        ]);
+
+        return redirect()->back()->with('success', 'Layanan berhasil diperbarui.');
+    }
 
 }

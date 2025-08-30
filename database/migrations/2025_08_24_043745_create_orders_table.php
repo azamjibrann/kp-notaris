@@ -17,7 +17,7 @@ return new class extends Migration
         $table->unsignedBigInteger('layanan_id');
         $table->date('tanggal');
         $table->text('alamat');
-        $table->string('status')->default('pending');
+        $table->text('telpon');
         $table->text('keterangan')->nullable();
         $table->timestamps();
 

@@ -15,7 +15,7 @@ class Order extends Model
         'tanggal',     // tambahkan tanggal ke fillable
         'alamat',      // tambahkan alamat ke fillable
         'keterangan',
-        'status',
+        'telpon',
     ];
 
     // Relasi ke User (foreign key = user_id)

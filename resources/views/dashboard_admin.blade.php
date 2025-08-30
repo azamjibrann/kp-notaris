@@ -7,6 +7,7 @@
     <title>Dashboard</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     @vite(['resources/css/app.css', 'resources/css/custom.css', 'resources/js/app.js'])
+
 </head>
 <style>
     .content-section {
@@ -19,6 +20,7 @@
         /* hanya yang active yang muncul */
     }
 </style>
+<script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
 <body class="p-0 m-0 box-border overflow-hidden bg-gray-50">
     <div class="grid grid-cols-[280px_1fr] min-h-screen max-w-full overflow-hidden">
@@ -107,23 +109,25 @@
                             </div>
                             <div>
                                 <h3 class="text-sm font-semibold text-gray-800">Layanan Notaris</h3>
-                                <p class="text-xl font-bold text-gray-900">156</p>
+                                <p class="text-xl font-bold text-gray-900">{{ $layananCount }}</p>
                             </div>
                         </div>
                     </div>
 
+
                     <!-- Card 2 - Formulir -->
                     <div class="card p-4">
                         <div class="flex items-center space-x-3">
-                            <div class="user-iconl w-12 h-12">
+                            <div class="user-icon w-12 h-12">
                                 <i class='bx bx-notepad text-lg'></i>
                             </div>
                             <div>
-                                <h3 class="text-sm font-semibold text-gray-800">Formulir Masuk</h3>
-                                <p class="text-xl font-bold text-gray-900">35</p>
+                                <h3 class="text-sm font-semibold text-gray-800">Formu Konsul</h3>
+                                <p class="text-xl font-bold text-gray-900">{{ $orderCount }}</p>
                             </div>
                         </div>
                     </div>
+
 
                     <!-- Card 3 - Layanan Populer -->
                     <div class="card p-4">
@@ -133,7 +137,13 @@
                             </div>
                             <div>
                                 <h3 class="text-sm font-semibold text-gray-800">Layanan Populer</h3>
-                                <p class="text-xl font-bold text-gray-900">35</p>
+                                <p class="text-xl font-bold text-gray-900">
+                                    @if($layananPopuler)
+                                        {{ $layananPopuler->layanan->nama_layanan }} ({{ $layananPopuler->total }})
+                                    @else
+                                        Belum ada pesanan
+                                    @endif
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -141,82 +151,68 @@
 
                 <!-- Kelola Layanan Notaris -->
                 <div class="container flex w-full justify-between mt-5 gap-8">
-                    <div class="flex flex-col grow p-3 shadow-xl rounded-md card">
-                        <h2 class="text-xl font-bold ">Kelola Layanan Notaris</h2>
-                        <button class="bg-blue-500 rounded-md p-1 w-2/4 text-white my-3">+ Tambah Layanan</button>
-                        <table class="table-auto border border-blue-400 border-collapse my-2">
-                            <thead class="bg-gray-200">
-                                <tr>
-                                    <th class="border border-blue-400 px-4 py-2">Layanan apa</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="border border-blue-400 px-4 py-2">Info Layanan</td>
-                                </tr>
-                                <tr>
-                                    <td class="border border-blue-400 px-4 py-2">Apa si</td>
-                                </tr>
-                                <tr>
-                                    <td class="border border-blue-400 px-4 py-2">Yagataw</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="container flex w-full mt-5 gap-8">
+                        <div class="flex flex-col grow p-3 shadow-xl rounded-md card">
+                            <h2 class="text-xl font-bold">Daftar Layanan Notaris</h2>
 
-                        <div class="flex justify-between">
-                            <button class="bg-green-500 rounded-md p-1 w-28 text-white my-3">Edit</button>
-                            <button class="bg-gray-500 rounded-md p-1 w-28 text-white my-3">Hapus</button>
+                            <table class="table-auto border border-blue-400 border-collapse my-2 ">
+                                <thead class="bg-gray-200">
+                                    <tr>
+                                        <th class="border border-blue-400 px-4 py-2">Nama Layanan</th>
+                                        <th class="border border-blue-400 px-4 py-2">Deskripsi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse($layanans as $layanan)
+                                        <tr>
+                                            <td class="border border-blue-400 px-4 py-2">
+                                                {{ $layanan->nama_layanan }}
+                                            </td>
+                                            <td class="border border-blue-400 px-4 py-2">
+                                                {{ $layanan->deskripsi }}
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="2" class="border border-blue-400 px-4 py-2 text-center text-gray-500">
+                                                Belum ada layanan tersedia
+                                            </td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
                         </div>
                     </div>
+
+
                     <!--  -->
 
                     <!-- Item Formulir Konsul -->
                     <div class="flex grow flex-col card p-3">
-                        <h2 class="text-xl font-bold ">Formulir Konsultasi</h2>
-                        <input type="text" id="searchInput" placeholder="Cari..."
-                            class="border p-2 mb-3 rounded-lg my-2">
-                        <table class="table-auto border-collapse border border-gray-300 w-full">
-                            <thead class="bg-gray-100">
-                                <tr>
-                                    <th class="border border-gray-300 px-4 py-2">Nama</th>
-                                    <th class="border border-gray-300 px-4 py-2">Kontak</th>
-                                    <th class="border border-gray-300 px-4 py-2">Alamat</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="border border-gray-300 px-4 py-2">Azam</td>
-                                    <td class="border border-gray-300 px-4 py-2">0896167832</td>
-                                    <td class="border border-gray-300 px-4 py-2">Bandung</td>
-                                </tr>
-                                <tr>
-                                    <td class="border border-gray-300 px-4 py-2">Jibran</td>
-                                    <td class="border border-gray-300 px-4 py-2">082374324</td>
-                                    <td class="border border-gray-300 px-4 py-2">Jakarta</td>
-                                </tr>
-                                <tr>
-                                    <td class="border border-gray-300 px-4 py-2">Jibran</td>
-                                    <td class="border border-gray-300 px-4 py-2">082374324</td>
-                                    <td class="border border-gray-300 px-4 py-2">Jakarta</td>
-                                </tr>
-                                <tr>
-                                    <td class="border border-gray-300 px-4 py-2">Jibran</td>
-                                    <td class="border border-gray-300 px-4 py-2">082374324</td>
-                                    <td class="border border-gray-300 px-4 py-2">Jakarta</td>
-                                </tr>
-                                <tr>
-                                    <td class="border border-gray-300 px-4 py-2">Jibran</td>
-                                    <td class="border border-gray-300 px-4 py-2">082374324</td>
-                                    <td class="border border-gray-300 px-4 py-2">Jakarta</td>
-                                </tr>
-                                <tr>
-                                    <td class="border border-gray-300 px-4 py-2">Jibran</td>
-                                    <td class="border border-gray-300 px-4 py-2">082374324</td>
-                                    <td class="border border-gray-300 px-4 py-2">Jakarta</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+    <h2 class="text-xl font-bold ">Formulir Konsultasi</h2>
+    <input type="text" id="searchInput" placeholder="Cari..."
+        class="border p-2 mb-3 rounded-lg my-2">
+
+    <table class="table-auto border-collapse border border-gray-300 w-full">
+        <thead class="bg-gray-100">
+            <tr>
+                <th class="border border-gray-300 px-4 py-2">Nama</th>
+                <th class="border border-gray-300 px-4 py-2">Kontak</th>
+                <th class="border border-gray-300 px-4 py-2">Alamat</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($orders as $item)
+                <tr>
+                    <td class="border border-gray-300 px-4 py-2">{{ $item->user->username }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ $item->telpon }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ $item->alamat }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+
                 </div>
             </div>
             <!--  -->
@@ -255,26 +251,65 @@
                     </thead>
                     <tbody>
                         @foreach ($layanans as $layanan)
-                        <tr>
-                            <td class="border px-4 py-2">{{ $layanan->nama_layanan }}</td>
-                            <td class="border px-4 py-2">{{ $layanan->deskripsi }}</td>
-                            <td class="border px-4 py-2">
-                                <form action="{{ route('layanan.destroy', $layanan->id) }}" method="POST" class="mt-2 flex place-content-center gap-4">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit"
-                                        class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 ">
-                                        Hapus
-                                    </button>
-                                    <button type="submit"
-                                        class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-500 ">
-                                        Edit
-                                    </button>
-                                    
-                                </form>
-                            </td>
-                        </tr>
-                        @endforeach
+<tr>
+    <td class="border px-4 py-2">{{ $layanan->nama_layanan }}</td>
+    <td class="border px-4 py-2">{{ $layanan->deskripsi }}</td>
+    <td class="border px-4 py-2">
+        <div x-data="{ open: false }">
+
+            <!-- Tombol Edit + Hapus sejajar -->
+            <div class="flex items-center justify-center gap-3">
+                <!-- Tombol Edit -->
+                <button @click="open = !open"
+                        class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-500">
+                    Edit
+                </button>
+
+                <!-- Tombol Hapus -->
+                <form action="{{ route('layanan.destroy', $layanan->id) }}" method="POST"
+                      onsubmit="return confirm('Yakin ingin menghapus layanan ini?')">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit"
+                            class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">
+                        Hapus
+                    </button>
+                </form>
+            </div>
+
+            <!-- Form Edit (hidden, tampil di bawah tombol) -->
+            <div x-show="open" class="mt-3 bg-gray-100 p-4 rounded shadow">
+                <form action="{{ route('layanan.update', $layanan->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+
+                    <div class="mb-2">
+                        <label class="block text-gray-700">Nama Layanan</label>
+                        <input type="text" name="nama_layanan"
+                               value="{{ old('nama_layanan', $layanan->nama_layanan) }}"
+                               class="w-full border rounded px-3 py-2">
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="block text-gray-700">Deskripsi</label>
+                        <textarea name="deskripsi" rows="2"
+                                  class="w-full border rounded px-3 py-2">{{ old('deskripsi', $layanan->deskripsi) }}</textarea>
+                    </div>
+
+                    <button type="submit"
+                            class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700">
+                        Simpan
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </td>
+</tr>
+@endforeach
+
+
+
                     </tbody>
                 </table>
 
@@ -357,7 +392,7 @@
                                 <th class="border px-4 py-2">User</th>
                                 <th class="border px-4 py-2">Tanggal</th>
                                 <th class="border px-4 py-2">Alamat</th>
-                                <th class="border px-4 py-2">Status</th>
+                                <th class="border px-4 py-2">Telpon</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -368,7 +403,7 @@
                                 <td class="border px-4 py-2">{{ $item->user->username }}</td>
                                 <td class="border px-4 py-2">{{ $item->tanggal }}</td>
                                 <td class="border px-4 py-2">{{ $item->alamat }}</td>
-                                <td class="border px-4 py-2">{{ ucfirst($item->status) }}</td>
+                                <td class="border px-4 py-2">{{ $item->telpon }}</td>
                             </tr>
                             @endforeach
                         </tbody>

@@ -13,7 +13,12 @@ class PhotoController extends Controller
         $photos = Photo::latest()->get();
         return view('dashboard_admin', compact('photos'));
     }
-
+    public function galeri()
+{
+    $photos = Photo::latest()->get();
+    // arahkan ke galeri publik
+    return view('galeri', compact('photos'));
+}
     public function create()
     {
         return view('tbgaleri');

@@ -41,29 +41,18 @@
     </nav>
 
     <div class="container-galeri">
-        <h3 data-aos="fade" data-aos-delay="50" data-aos-duration="600">Galeri Kegiatan & Dokumentasi</h3>
-        <div class="konten-galeri">
-            <div class="gambar-kegiatan">
-                <img src="img/galeri1.jpg" alt=""data-aos="zoom-out" data-aos-delay="50" data-aos-duration="700" data-aos-anchor-placement="top-bottom">
+    <h3 data-aos="fade" data-aos-delay="50" data-aos-duration="600">
+        Galeri Kegiatan & Dokumentasi
+    </h3>
+    <div class="konten-galeri">
+        @foreach ($photos as $photo)
+            <div class="gambar-kegiatan" data-aos="zoom-out" data-aos-delay="50" data-aos-duration="700" data-aos-anchor-placement="top-bottom">
+                <img src="{{ asset('storage/' . $photo->image) }}" alt="Foto kegiatan">
             </div>
-            <div class="gambar-kegiatan">
-                <img src="img/galeri2.jpg" alt=""data-aos="zoom-out" data-aos-delay="50" data-aos-duration="700" data-aos-anchor-placement="top-bottom">
-            </div>
-            <div class="gambar-kegiatan">
-                <img src="img/galeri3.jpg" alt=""data-aos="zoom-out" data-aos-delay="50" data-aos-duration="700" data-aos-anchor-placement="top-bottom">
-            </div>
-            <div class="gambar-kegiatan">
-                <img src="img/galeri4.jpg" alt=""data-aos="zoom-out" data-aos-delay="50" data-aos-duration="700" data-aos-anchor-placement="top-bottom">
-            </div>
-            <div class="gambar-kegiatan">
-                <img src="img/galeri5.jpg" alt=""data-aos="zoom-out" data-aos-delay="50" data-aos-duration="700" data-aos-anchor-placement="top-bottom">
-            </div>
-            <div class="gambar-kegiatan">
-                <img src="img/bapa.png" alt=""data-aos="zoom-out" data-aos-delay="50" data-aos-duration="700" data-aos-anchor-placement="top-bottom">
-            </div>
-
-        </div>
+        @endforeach
     </div>
+</div>
+
      <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({

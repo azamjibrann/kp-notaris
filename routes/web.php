@@ -37,7 +37,9 @@ Route::middleware(['prevent-back-history'])->group(function () {
         Route::post('/login', [AuthController::class, 'login'])->name('login');
         Route::post('/register', [AuthController::class, 'register'])->name('register');
 
-        Route::view('/galeri', 'galeri')->name('galeri');
+        // Public galeri
+Route::get('/galeri', [PhotoController::class, 'galeri'])->name('galeri');
+
         Route::view('/layanan', 'layanan')->name('layanan');
         Route::view('/tentang', 'tentang')->name('tentang');
         Route::view('/kontak', 'kontak')->name('kontak');
