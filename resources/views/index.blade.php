@@ -76,7 +76,7 @@
                 <p><i class='bx bxs-check-circle'></i> Komitmen untuk terus berkembang bersama tim dan teknologi</p>
             </div>
             <div class="kenali-kami">
-                <a href="tentang.html" class="tbl-kenali">Tentang Kami</a>
+                <a href="{{ route('tentang') }}" class="tbl-kenali">Tentang Kami</a>
             </div>
         </div>
     </div>

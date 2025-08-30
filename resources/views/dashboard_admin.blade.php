@@ -10,13 +10,14 @@
 </head>
 <style>
     .content-section {
-  display: none; /* semua konten disembunyikan */
-}
+        display: none;
+        /* semua konten disembunyikan */
+    }
 
-.content-section.active {
-  display: block; /* hanya yang active yang muncul */
-}
-
+    .content-section.active {
+        display: block;
+        /* hanya yang active yang muncul */
+    }
 </style>
 
 <body class="p-0 m-0 box-border overflow-hidden bg-gray-50">
@@ -83,9 +84,10 @@
             <div class="mt-4">
                 <form action="{{ route('logout') }}" method="POST" style="margin: 0;">
                     @csrf
-                    <button type="submit" class="logout-btn-custom text-white px-4 py-2 rounded-lg font-medium w-full text-sm">
-                    Logout
-                </button>
+                    <button type="submit"
+                        class="logout-btn-custom text-white px-4 py-2 rounded-lg font-medium w-full text-sm">
+                        Logout
+                    </button>
                 </form>
             </div>
         </div>
@@ -223,32 +225,69 @@
             <div id="layanan" class="content-section mt-4">
                 <div class="flex justify-between">
                     <h1 class="text-3xl font-bold text-gray-800 mb-8">Layanan</h1>
-                    <button onclick="openModal()"
-                            class="bg-blue-500 h-9 rounded-md w-48 text-white">+ Tambahkan Layanan</button>
+                    <button onclick="openModal()" class="bg-blue-500 h-9 rounded-md w-48 text-white">+ Tambahkan
+                        Layanan</button>
                 </div>
 
-                {{-- LIST LAYANAN --}}
+                <!-- {{-- LIST LAYANAN --}}
                 @foreach ($layanans as $layanan)
-                    <div class="bg-white shadow rounded p-4 mb-4">
-                        <h2 class="text-lg font-semibold">{{ $layanan->nama_layanan }}</h2>
-                        <p class="text-gray-600">{{ $layanan->deskripsi }}</p>
-                        <form action="{{ route('layanan.destroy', $layanan->id) }}" method="POST" class="mt-2">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit"
-                                    class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">
-                                Hapus
-                            </button>
-                        </form>
-                    </div>
-                @endforeach
+                <div class="bg-white shadow rounded p-4 mb-4">
+                    <h2 class="text-lg font-semibold">{{ $layanan->nama_layanan }}</h2>
+                    <p class="text-gray-600">{{ $layanan->deskripsi }}</p>
+                    <form action="{{ route('layanan.destroy', $layanan->id) }}" method="POST" class="mt-2">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">
+                            Hapus
+                        </button>
+                    </form>
+                </div>
+                @endforeach -->
+
+
+                <table class="w-full border border-gray-300 mt-7">
+                    <thead class="bg-gray-200">
+                        <tr>
+                            <th class="border px-4 py-2">Nama Layanan</th>
+                            <th class="border px-4 py-2">Deskripsi</th>
+                            <th class="border px-4 py-2">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($layanans as $layanan)
+                        <tr>
+                            <td class="border px-4 py-2">{{ $layanan->nama_layanan }}</td>
+                            <td class="border px-4 py-2">{{ $layanan->deskripsi }}</td>
+                            <td class="border px-4 py-2">
+                                <form action="{{ route('layanan.destroy', $layanan->id) }}" method="POST" class="mt-2 flex place-content-center gap-4">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                        class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 ">
+                                        Hapus
+                                    </button>
+                                    <button type="submit"
+                                        class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-500 ">
+                                        Edit
+                                    </button>
+                                    
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+
+
+
+
 
                 {{-- MODAL FORM TAMBAH LAYANAN --}}
                 <div id="formModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
                     <div class="bg-white shadow-md rounded p-6 w-full max-w-lg relative">
                         <!-- Tombol close -->
                         <button onclick="closeModal()"
-                                class="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-xl">&times;</button>
+                            class="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-xl">&times;</button>
 
                         <h1 class="text-2xl font-bold mb-6 text-center">Tambah Layanan</h1>
                         <form action="{{ route('layanan.store') }}" method="POST" class="space-y-4">
@@ -262,12 +301,12 @@
                             <div>
                                 <label for="deskripsi" class="block font-medium mb-1">Deskripsi</label>
                                 <textarea id="deskripsi" name="deskripsi" rows="4"
-                                        class="w-full border rounded p-2 focus:outline-none focus:ring focus:border-blue-400"
-                                        placeholder="Masukkan deskripsi layanan"></textarea>
+                                    class="w-full border rounded p-2 focus:outline-none focus:ring focus:border-blue-400"
+                                    placeholder="Masukkan deskripsi layanan"></textarea>
                             </div>
                             <div class="text-center">
                                 <button type="submit"
-                                        class="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                                    class="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
                                     Simpan
                                 </button>
                             </div>
@@ -301,41 +340,42 @@
 
             <!-- Formulir Konsul -->
             <div id="konsul" class="content-section m-4">
-    <h1 class="text-3xl font-bold text-gray-800 mb-8">Daftar Pesanan</h1>
+                <h1 class="text-3xl font-bold text-gray-800 mb-8">Daftar Pesanan</h1>
 
-    <div class="flex justify-between">
-        <input type="text" placeholder="Sortir" class="border-2 h-10 p-3 rounded-md">
-        <input type="text" placeholder="Cari pesanan..." class="border-2 h-10 p-3 rounded-md w-1/2 ml-24">
-        <button class="text-white font-bold bg-blue-950 h-10 rounded-md w-40">Export</button>
-    </div>
+                <div class="flex justify-between">
+                    <input type="text" placeholder="Sortir" class="border-2 h-10 p-3 rounded-md">
+                    <input type="text" placeholder="Cari pesanan..." class="border-2 h-10 p-3 rounded-md w-1/2 ml-24">
+                    <button class="text-white font-bold bg-blue-950 h-10 rounded-md w-40">Export</button>
+                </div>
 
-    <div class="tabel">
-        <table class="w-full border border-gray-300 mt-7">
-            <thead class="bg-gray-200">
-                <tr>
-                    <th class="border px-4 py-2">#</th>
-                    <th class="border px-4 py-2">Layanan</th>
-                    <th class="border px-4 py-2">User</th>
-                    <th class="border px-4 py-2">Tanggal</th>
-                    <th class="border px-4 py-2">Alamat</th>
-                    <th class="border px-4 py-2">Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($orders as $i => $item)
-                    <tr>
-                        <td class="border px-4 py-2">{{ $i+1 }}</td>
-                        <td class="border px-4 py-2">{{ $item->layanan->nama_layanan }}</td>
-                        <td class="border px-4 py-2">{{ $item->user->username }}</td>
-                        <td class="border px-4 py-2">{{ $item->tanggal }}</td>
-                        <td class="border px-4 py-2">{{ $item->alamat }}</td>
-                        <td class="border px-4 py-2">{{ ucfirst($item->status) }}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-</div>
+                <div class="tabel">
+                    <table class="w-full border border-gray-300 mt-7">
+                        <thead class="bg-gray-200">
+                            <tr>
+                                <th class="border px-4 py-2">No</th>
+                                <th class="border px-4 py-2">Layanan</th>
+                                <th class="border px-4 py-2">User</th>
+                                <th class="border px-4 py-2">Tanggal</th>
+                                <th class="border px-4 py-2">Alamat</th>
+                                <th class="border px-4 py-2">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($orders as $i => $item)
+                            <tr>
+                                <td class="border px-4 py-2">{{ $i+1 }}</td>
+                                <td class="border px-4 py-2">{{ $item->layanan->nama_layanan }}</td>
+                                <td class="border px-4 py-2">{{ $item->user->username }}</td>
+                                <td class="border px-4 py-2">{{ $item->tanggal }}</td>
+                                <td class="border px-4 py-2">{{ $item->alamat }}</td>
+                                <td class="border px-4 py-2">{{ ucfirst($item->status) }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
 
             {{-- galeri --}}
             <div id="galeri" class="content-section">
@@ -359,25 +399,26 @@
                         <input type="text" name="judul" class="border p-2 w-full rounded" placeholder="Judul">
                     </div>
                     <div class="mb-3">
-                        <input type="text" name="description" class="border p-2 w-full rounded" placeholder="Deskripsi foto">
+                        <input type="text" name="description" class="border p-2 w-full rounded"
+                            placeholder="Deskripsi foto">
                     </div>
                     <button type="submit" class="bg-green-500 px-4 py-2 text-white rounded">Simpan</button>
                 </form>
                 {{-- List Galeri --}}
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                     @foreach ($photos as $photo)
-                        <div class="bg-white shadow-md rounded-lg overflow-hidden">
-                            <img src="{{ asset('storage/' . $photo->image) }}" class="w-full h-40 object-cover" />
-                            <p class="p-3 text-gray-800 text-sm">{{ $photo->description }}</p>
-                        </div>
+                    <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                        <img src="{{ asset('storage/' . $photo->image) }}" class="w-full h-40 object-cover" />
+                        <p class="p-3 text-gray-800 text-sm">{{ $photo->description }}</p>
+                    </div>
                     @endforeach
                 </div>
             </div>
 
             <script>
-            function toggleForm() {
-                document.getElementById("formGaleri").classList.toggle("hidden");
-            }
+                function toggleForm() {
+                    document.getElementById("formGaleri").classList.toggle("hidden");
+                }
             </script>
         </div>
         <!-- galeri -->

@@ -1,37 +1,41 @@
-// // Cek elemen sebelum pakai
-// const container = document.querySelector('.container');
-// const registerBtn = document.querySelector('.register-btn');
-// const loginBtn = document.querySelector('.login-btn');
+// ============================
+// Toggle Register / Login Form
+// ============================
+const container = document.querySelector('.container');
+const registerBtn = document.querySelector('.register-btn');
+const loginBtn = document.querySelector('.login-btn');
 
-// if (registerBtn && loginBtn && container) {
-//   registerBtn.addEventListener('click', () => {
-//     container.classList.add('active');
-//   });
+if (registerBtn && loginBtn && container) {
+  registerBtn.addEventListener('click', () => {
+    container.classList.add('active');
+  });
 
-//   loginBtn.addEventListener('click', () => {
-//     container.classList.remove('active');
-//   });
-// }
+  loginBtn.addEventListener('click', () => {
+    container.classList.remove('active');
+  });
+}
 
-// //Toggle Password
-// function togglePassword(inputId, iconSpan) {
-//   const input = document.getElementById(inputId);
-//   const icon = iconSpan.querySelector('i');
+// ============================
+// Toggle Password
+// ============================
+function togglePassword(inputId, iconSpan) {
+  const input = document.getElementById(inputId);
+  const icon = iconSpan.querySelector('i');
 
-//   if (input && icon) {
-//     if (input.type === "password") {
-//       input.type = "text";
-//       icon.classList.remove('bx-show');
-//       icon.classList.add('bx-hide');
-//     } else {
-//       input.type = "password";
-//       icon.classList.remove('bx-hide');
-//       icon.classList.add('bx-show');
-//     }
-//   }
-// }
+  if (input && icon) {
+    if (input.type === "password") {
+      input.type = "text";
+      icon.classList.replace('bx-show', 'bx-hide');
+    } else {
+      input.type = "password";
+      icon.classList.replace('bx-hide', 'bx-show');
+    }
+  }
+}
 
+// ============================
 // Toggle Menu (Hamburger)
+// ============================
 const menuToggleBtn = document.querySelector('.hamburger');
 const navMenu = document.getElementById("navMenu");
 if (menuToggleBtn && navMenu) {
@@ -42,7 +46,9 @@ if (menuToggleBtn && navMenu) {
   });
 }
 
-// Navbar scroll transparent → solid
+// ============================
+// Navbar scroll → solid
+// ============================
 const navbar = document.getElementById('navbar');
 if (navbar) {
   window.addEventListener('scroll', function () {
@@ -56,79 +62,59 @@ if (navbar) {
   });
 }
 
-// Active Link Highlighting
+// ============================
+// Active Link Highlight (Navbar)
+// ============================
 document.addEventListener('DOMContentLoaded', function () {
   const links = document.querySelectorAll('.menu a');
   const currentPath = window.location.pathname.split('/').pop();
 
   links.forEach(link => {
     const linkHref = link.getAttribute('href');
-
     if (linkHref === currentPath || (linkHref === "#home" && currentPath === "")) {
       link.classList.add('active');
     }
   });
 });
 
-function showContent(id, event) {
-  // Sembunyikan semua konten
-  const sections = document.querySelectorAll('.content-section');
-  sections.forEach(section => section.style.display = 'none');
-
-  // Tampilkan konten yang dipilih
-  const selectedSection = document.getElementById(id);
-  if (selectedSection) {
-    selectedSection.style.display = 'block';
-  }
-
-  // Tambah efek active di sidebar
-  const listDash = document.querySelectorAll('.list-dash');
-  listDash.forEach(item => item.classList.remove('active'));
-
-  if (event && event.currentTarget) {
-    event.currentTarget.parentElement.classList.add('active');
-  }
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-  showContent('menu-konten'); // konten default
-});
-
-
-// Dashboard Navigation Functions
+// ============================
+// Dashboard Navigation
+// ============================
 function showContent(contentId, event) {
-    event.preventDefault();
+  if (event) event.preventDefault();
 
-    // Remove active class from all menu items
-    document.querySelectorAll('.menu-item').forEach(item => {
-        item.classList.remove('active');
-    });
+  // Remove active class from all menu items
+  document.querySelectorAll('.menu-item').forEach(item => {
+    item.classList.remove('active');
+  });
 
-    // Add active class to clicked menu item
-    event.currentTarget.closest('.menu-item').classList.add('active');
+  // Add active class to clicked menu item
+  if (event) event.currentTarget.closest('.menu-item').classList.add('active');
 
-    // Hide all content sections
-    document.querySelectorAll('.content-section').forEach(section => {
-        section.classList.remove('active');
-    });
+  // Hide all sections
+  document.querySelectorAll('.content-section').forEach(section => {
+    section.classList.remove('active');
+  });
 
-    // Show selected content
-    document.getElementById(contentId).classList.add('active');
+  // Show selected section
+  document.getElementById(contentId).classList.add('active');
+
+  // Simpan ke localStorage
+  localStorage.setItem('activeSection', contentId);
 }
 
-// Initialize dashboard when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    // Show menu content by default
-    const menuKonten = document.getElementById('menu-konten');
-    if (menuKonten) {
-        menuKonten.classList.add('active');
-    }
+// ============================
+// Init Dashboard
+// ============================
+document.addEventListener('DOMContentLoaded', function () {
+  const activeSection = localStorage.getItem('activeSection') || 'menu-konten';
 
-    // Set first menu item as active
-    const firstMenuItem = document.querySelector('.menu-item');
-    if (firstMenuItem) {
-        firstMenuItem.classList.add('active');
-    }
+  // Tampilkan konten terakhir
+  document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
+  document.getElementById(activeSection).classList.add('active');
+
+  // Highlight sidebar menu terakhir
+  document.querySelectorAll('.menu-item').forEach(item => item.classList.remove('active'));
+  const activeLink = document.querySelector(`a[onclick*="${activeSection}"]`);
+  if (activeLink) activeLink.closest('.menu-item').classList.add('active');
 });
-
-// Add this to your existing Laravel JavaScript file

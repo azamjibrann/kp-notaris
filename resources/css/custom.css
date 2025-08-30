@@ -24,12 +24,12 @@
 }
 
 .logout-btn-custom {
-    background-color: #3730a3;
+    background-color: rgb(20, 40, 130);
     transition: all 0.3s ease;
 }
 
 .logout-btn-custom:hover {
-    background-color: #4338ca;
+    background-color: #2341a3;
     transform: translateY(-2px);
 }
 
@@ -81,3 +81,4 @@
     color: white;
     font-size: 24px;
 }
+

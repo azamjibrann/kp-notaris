@@ -112,7 +112,7 @@
 
 
             <!-- Other Content Sections -->
-            <div id="layanan" class="content-section mt-4">
+            <div id="layanan" class="content-section mt-4 flex">
                 <div class="flex justify-between">
                     <h1 class="text-3xl font-bold text-gray-800 mb-8">Layanan</h1>
                 </div>
