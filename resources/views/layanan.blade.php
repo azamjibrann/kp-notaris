@@ -55,29 +55,29 @@
                 <p>Pembuatan Akta Yayasan</p>
                 </div>
             <div class="pembuatan">
-                <p>Pembuatan Akta Perkumpulan Warmeking</p>
+                <p>Pembuatan Akta Perkumpulan</p>
                 </div>
             <div class="pembuatan">
+                <p>Warmerking/Register</p>
+            </div>
+            <div class="pembuatan">
+                <p>Legalisasi</p>
+            </div>
+            <div class="pembuatan">
+                <p>Pendirian Firma</p>
+            </div>
+            <div class="pembuatan">
+                <p>Akta Jaminan Fidusia</p>
+            </div>
+            <div class="pembuatan">
+                <p>Pembuatan Akta-Akta Notaril Lainnya</p>
+            </div>
+            {{-- <div class="pembuatan">
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum, sequi.</p>
             </div>
             <div class="pembuatan">
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum, sequi.</p>
-            </div>
-            <div class="pembuatan">
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum, sequi.</p>
-            </div>
-            <div class="pembuatan">
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum, sequi.</p>
-            </div>
-            <div class="pembuatan">
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum, sequi.</p>
-            </div>
-            <div class="pembuatan">
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum, sequi.</p>
-            </div>
-            <div class="pembuatan">
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum, sequi.</p>
-            </div>
+            </div> --}}
         </div>
     </div>
     <!-- Akhir Layanan Notaris -->

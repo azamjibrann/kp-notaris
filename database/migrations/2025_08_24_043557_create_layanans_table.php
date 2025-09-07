@@ -15,6 +15,8 @@ return new class extends Migration
         $table->id();
         $table->string('nama_layanan');
         $table->text('deskripsi')->nullable();
+        $table->string('dokumen')->nullable();
+
         $table->timestamps();
     });
 }

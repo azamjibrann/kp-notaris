@@ -53,7 +53,7 @@
                     <h2>Hubungi Kami</h2>
                     <p>Kami Siap Membantu Anda</p>
                     <div class="bungkus-sosmed">
-                        <a href="https://wa.me/6285794778311?text=Hallo%20!" target="_blank">
+                        <a href="https://wa.me/6281323562655?text=Hallo%20!" target="_blank">
                             <div class="sosmed wa">
                                 <h3>WhatsApp</h3>
                                 <i class='bx bxl-whatsapp bx-lg bx-tada-hover'></i>

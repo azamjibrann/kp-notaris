@@ -122,6 +122,18 @@
                     <div class="bg-white shadow rounded p-4 mb-4" x-data="{ open: false }">
                         <h2 class="font-semibold text-lg">{{ $layanan->nama_layanan }}</h2>
                         <p class="text-gray-600 mb-3">{{ $layanan->deskripsi }}</p>
+                        <div class="mb-3">
+            <span class="font-semibold text-gray-700">Dokumen:</span>
+            @if ($layanan->dokumen)
+                <a href="{{ asset('storage/' . $layanan->dokumen) }}"
+                   target="_blank"
+                   class="text-blue-600 underline">
+                    Persyaratan.pdf
+                </a>
+            @else
+                <span class="text-gray-500">Tidak ada</span>
+            @endif
+        </div>
 
                         {{-- Tombol Buat Jadwal --}}
                         <button @click="open = !open"

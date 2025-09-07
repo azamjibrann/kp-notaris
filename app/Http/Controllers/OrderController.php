@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Photo;  // Sesuaikan dengan nama model dan namespace
 
+use App\Models\Photo;
 use App\Models\Order;
 use App\Models\Layanan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 class OrderController extends Controller
 {
@@ -34,8 +36,6 @@ class OrderController extends Controller
             'keterangan' => 'nullable|string',
             'telpon'     => 'required|string',
         ]);
-            // dd(Auth::id());
-            // dd($request->all());
 
         Order::create([
             'user_id'    => Auth::id(),
@@ -44,35 +44,65 @@ class OrderController extends Controller
             'alamat'     => $request->alamat,
             'keterangan' => $request->keterangan,
             'telpon'     => $request->telpon,
-            ]);
+        ]);
 
         return redirect()->route('user.pesanan')
-                        ->with('success', 'Pesanan berhasil dibuat!');
+                         ->with('success', 'Pesanan berhasil dibuat!');
     }
 
     // User melihat daftar pesanannya sendiri
-    public function pesananUser()
+    public function pesananUser(Request $request)
     {
-        $orders = Order::with(['layanan', 'user'])
-                ->where('user_id', Auth::id())
-                ->latest()
-                ->get();
+        $orders = Order::with('layanan')
+            ->where('user_id', Auth::id())
+            ->when($request->filled('search'), function ($query) use ($request) {
+                $query->whereHas('layanan', function ($q) use ($request) {
+                    $q->where('nama_layanan', 'like', '%' . $request->search . '%');
+                });
+            })
+            ->latest()
+            ->get();
 
-    $layanans = Layanan::all();
+        $layanans = Layanan::all();
+        $photos   = Photo::all();
 
-    $photos = Photo::all(); // Ganti Photo dengan model galeri yang sesuai
-
-    return view('dashboard_user', compact('layanans', 'orders', 'photos'));
-
+        return view('dashboard_user', compact('layanans', 'orders', 'photos'));
     }
 
     // Admin melihat semua pesanan
-    public function adminIndex()
-    {
-        $orders = Order::with(['layanan', 'user'])
-                        ->latest()
-                        ->get();
+   // Admin melihat semua pesanan
+public function adminIndex(Request $request)
+{
+    $orders = Order::with(['layanan', 'user'])
+        ->when($request->filled('search'), function ($query) use ($request) {
+            $search = $request->search;
+            $query->whereHas('user', function ($q) use ($search) {
+                $q->where('username', 'like', "%{$search}%");
+            });
+        })
+        ->when($request->filled('layanan_id'), function ($query) use ($request) {
+            $query->where('layanan_id', $request->layanan_id);
+        })
+        ->latest()
+        ->get();
 
-        return view('admin.pesanan', compact('orders'));
-    }
+    $layanans = Layanan::latest()->get();
+    $photos   = Photo::latest()->get();
+        dd($request->search);
+
+    return view('dashboard_admin', compact('orders', 'layanans', 'photos'));
+}
+
+
+public function exportPdf()
+{
+    $orders = Order::with(['layanan', 'user'])->get();
+
+    $pdf = Pdf::loadView('orders_pdf', compact('orders'))
+              ->setPaper('a4', 'portrait');
+
+    return $pdf->download('data-orders.pdf');
+}
+
+
 }

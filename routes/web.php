@@ -79,6 +79,7 @@ Route::get('/galeri', [PhotoController::class, 'galeri'])->name('galeri');
             // Order List
             Route::get('/orders', [OrderController::class, 'adminIndex'])->name('admin.orders');
 
+            Route::get('/orders/export/pdf', [OrderController::class, 'exportPdf'])->name('admin.orders.export.pdf');
             // Galeri
             Route::resource('photos', PhotoController::class)->only(['index', 'store', 'destroy']);
         });

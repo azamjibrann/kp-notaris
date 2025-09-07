@@ -189,29 +189,29 @@
 
                     <!-- Item Formulir Konsul -->
                     <div class="flex grow flex-col card p-3">
-    <h2 class="text-xl font-bold ">Formulir Konsultasi</h2>
-    <input type="text" id="searchInput" placeholder="Cari..."
-        class="border p-2 mb-3 rounded-lg my-2">
+                        <h2 class="text-xl font-bold ">Formulir Konsultasi</h2>
+                        <input type="text" id="searchInput" placeholder="Cari..."
+                            class="border p-2 mb-3 rounded-lg my-2">
 
-    <table class="table-auto border-collapse border border-gray-300 w-full">
-        <thead class="bg-gray-100">
-            <tr>
-                <th class="border border-gray-300 px-4 py-2">Nama</th>
-                <th class="border border-gray-300 px-4 py-2">Kontak</th>
-                <th class="border border-gray-300 px-4 py-2">Alamat</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($orders as $item)
-                <tr>
-                    <td class="border border-gray-300 px-4 py-2">{{ $item->user->username }}</td>
-                    <td class="border border-gray-300 px-4 py-2">{{ $item->telpon }}</td>
-                    <td class="border border-gray-300 px-4 py-2">{{ $item->alamat }}</td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-</div>
+                        <table class="table-auto border-collapse border border-gray-300 w-full">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="border border-gray-300 px-4 py-2">Nama</th>
+                                    <th class="border border-gray-300 px-4 py-2">Kontak</th>
+                                    <th class="border border-gray-300 px-4 py-2">Alamat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($orders as $item)
+                                    <tr>
+                                        <td class="border border-gray-300 px-4 py-2">{{ $item->user->username }}</td>
+                                        <td class="border border-gray-300 px-4 py-2">{{ $item->telpon }}</td>
+                                        <td class="border border-gray-300 px-4 py-2">{{ $item->alamat }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
 
                 </div>
             </div>
@@ -246,6 +246,7 @@
                         <tr>
                             <th class="border px-4 py-2">Nama Layanan</th>
                             <th class="border px-4 py-2">Deskripsi</th>
+                            <th class="border px-4 py-2">Dokumen</th>
                             <th class="border px-4 py-2">Aksi</th>
                         </tr>
                     </thead>
@@ -254,6 +255,17 @@
 <tr>
     <td class="border px-4 py-2">{{ $layanan->nama_layanan }}</td>
     <td class="border px-4 py-2">{{ $layanan->deskripsi }}</td>
+    <td class="border px-4 py-2">
+        @if ($layanan->dokumen)
+                        <a href="{{ asset('storage/' . $layanan->dokumen) }}"
+                           target="_blank"
+                           class="text-blue-600 underline">
+                            Persyaratan dokumen
+                        </a>
+                    @else
+                        <span class="text-gray-500">Tidak ada</span>
+                    @endif
+    </td>
     <td class="border px-4 py-2">
         <div x-data="{ open: false }">
 
@@ -296,6 +308,21 @@
                                   class="w-full border rounded px-3 py-2">{{ old('deskripsi', $layanan->deskripsi) }}</textarea>
                     </div>
 
+                    <div class="mb-2">
+            <label class="block text-gray-700">Upload Dokumen</label>
+            <input type="file" name="dokumen"
+                   class="w-full border rounded px-3 py-2"
+                   accept=".pdf,.doc,.docx,.jpg,.png">
+            @if ($layanan->dokumen)
+                <p class="text-sm mt-1">
+                    Dokumen saat ini:
+                    <a href="{{ asset('storage/' . $layanan->dokumen) }}" target="_blank" class="text-blue-600 underline">
+                        Lihat Dokumen
+                    </a>
+                </p>
+            @endif
+        </div>
+
                     <button type="submit"
                             class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700">
                         Simpan
@@ -325,7 +352,7 @@
                             class="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-xl">&times;</button>
 
                         <h1 class="text-2xl font-bold mb-6 text-center">Tambah Layanan</h1>
-                        <form action="{{ route('layanan.store') }}" method="POST" class="space-y-4">
+                        <form action="{{ route('layanan.store') }}" method="POST"  enctype="multipart/form-data" class="space-y-4">
                             @csrf
                             <div>
                                 <label for="nama_layanan" class="block font-medium mb-1">Nama Layanan</label>
@@ -338,6 +365,15 @@
                                 <textarea id="deskripsi" name="deskripsi" rows="4"
                                     class="w-full border rounded p-2 focus:outline-none focus:ring focus:border-blue-400"
                                     placeholder="Masukkan deskripsi layanan"></textarea>
+                            </div>
+
+                            <div>
+                                <label for="dokumen" class="block font-medium mb-1">Upload Dokumen</label>
+                                <input type="file" id="dokumen" name="dokumen"
+                                    class="w-full border rounded p-2 focus:outline-none focus:ring focus:border-blue-400"
+                                    accept=".pdf,.doc,.docx,.jpg,.png">
+                                <p class="text-xs text-gray-500 mt-1">Format: PDF, DOC, DOCX, JPG, PNG (maks 2MB)</p>
+
                             </div>
                             <div class="text-center">
                                 <button type="submit"
@@ -375,41 +411,60 @@
 
             <!-- Formulir Konsul -->
             <div id="konsul" class="content-section m-4">
-                <h1 class="text-3xl font-bold text-gray-800 mb-8">Daftar Pesanan</h1>
+    <h1 class="text-3xl font-bold text-gray-800 mb-8">Daftar Pesanan</h1>
 
-                <div class="flex justify-between">
-                    <input type="text" placeholder="Sortir" class="border-2 h-10 p-3 rounded-md">
-                    <input type="text" placeholder="Cari pesanan..." class="border-2 h-10 p-3 rounded-md w-1/2 ml-24">
-                    <button class="text-white font-bold bg-blue-950 h-10 rounded-md w-40">Export</button>
-                </div>
+    <div class="flex justify-between items-center">
+        {{-- Sortir (belum ada logika di backend) --}}
+        {{-- <input type="text" placeholder="Sortir" class="border-2 h-10 p-3 rounded-md"> --}}
 
-                <div class="tabel">
-                    <table class="w-full border border-gray-300 mt-7">
-                        <thead class="bg-gray-200">
-                            <tr>
-                                <th class="border px-4 py-2">No</th>
-                                <th class="border px-4 py-2">Layanan</th>
-                                <th class="border px-4 py-2">User</th>
-                                <th class="border px-4 py-2">Tanggal</th>
-                                <th class="border px-4 py-2">Alamat</th>
-                                <th class="border px-4 py-2">Telpon</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($orders as $i => $item)
-                            <tr>
-                                <td class="border px-4 py-2">{{ $i+1 }}</td>
-                                <td class="border px-4 py-2">{{ $item->layanan->nama_layanan }}</td>
-                                <td class="border px-4 py-2">{{ $item->user->username }}</td>
-                                <td class="border px-4 py-2">{{ $item->tanggal }}</td>
-                                <td class="border px-4 py-2">{{ $item->alamat }}</td>
-                                <td class="border px-4 py-2">{{ $item->telpon }}</td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+        {{-- Cari Pesanan --}}
+        <form action="{{ route('admin.dashboard') }}#konsul" method="GET" class="flex w-1/2 ml-24">
+            <input type="text" name="search" placeholder="Cari pesanan..."
+                value="{{ request('search') }}"
+                class="border-2 h-10 p-3 rounded-md w-full">
+            <button type="submit" class="ml-2 bg-blue-600 text-white px-4 rounded">Cari</button>
+        </form>
+
+        {{-- Export (nanti bisa diarahkan ke route export excel/pdf) --}}
+        <a href="{{ route('admin.orders.export.pdf') }}"
+   class="text-white font-bold bg-blue-950 h-10 rounded-md w-40 flex items-center justify-center">
+   Export
+</a>
+
+    </div>
+
+    <div class="tabel">
+        <table class="w-full border border-gray-300 mt-7">
+            <thead class="bg-gray-200">
+                <tr>
+                    <th class="border px-4 py-2">No</th>
+                    <th class="border px-4 py-2">Layanan</th>
+                    <th class="border px-4 py-2">User</th>
+                    <th class="border px-4 py-2">Tanggal</th>
+                    <th class="border px-4 py-2">Alamat</th>
+                    <th class="border px-4 py-2">Telpon</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse($orders as $i => $item)
+                    <tr>
+                        <td class="border px-4 py-2">{{ $i+1 }}</td>
+                        <td class="border px-4 py-2">{{ $item->layanan->nama_layanan ?? '-' }}</td>
+                        <td class="border px-4 py-2">{{ $item->user->username ?? '-' }}</td>
+                        <td class="border px-4 py-2">{{ $item->tanggal }}</td>
+                        <td class="border px-4 py-2">{{ $item->alamat }}</td>
+                        <td class="border px-4 py-2">{{ $item->telpon }}</td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="6" class="text-center py-4">Belum ada pesanan</td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
+</div>
+
 
 
             {{-- galeri --}}
@@ -456,6 +511,7 @@
                 }
             </script>
         </div>
+
         <!-- galeri -->
 
 
