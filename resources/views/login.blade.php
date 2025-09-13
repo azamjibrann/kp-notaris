@@ -25,9 +25,6 @@
                     <span class="toggle-password" onclick="togglePassword('loginPassword', this)">
                         <i class='bx bx-show'></i></span>
                 </div>
-                <div class="forgot-link">
-                    <a href="#">Forgot Password</a>
-                </div>
                 <button type="submit" class="btn">Login</button>
             </form>
         </div>

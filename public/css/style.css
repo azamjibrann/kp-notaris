@@ -436,6 +436,42 @@ header video {
     margin-right: 400px;
 }
 
+.map {
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+
+/* Kerja Sama */
+.title {
+    font-weight: bold;
+    text-align: center;
+    margin-top: 50px;
+    font-size: 23px;  
+}
+
+.socials {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.links{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+}
+
+.links img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    gap: 30px;
+    object-fit: cover;
+}
+
 
 /* humberger */
 .hamburger {
@@ -480,9 +516,14 @@ header video {
 
 /* HP */
 @media (max-width: 576px) {
-    div{
+    div {
         overflow: hidden;
     }
+
+    .map {
+        margin-left: 35px;
+    }
+
     /* Navbar */
     .navbar {
         flex-direction: row;
@@ -576,12 +617,14 @@ header video {
     .kata-gambar {
         transform: translatex(6%);
     }
-    .kata-gambar h3{
+
+    .kata-gambar h3 {
         font-size: 22px;
         padding: 10px 20px;
         margin: 0;
     }
-    .kata-gambar p{
+
+    .kata-gambar p {
         font-size: 15px;
         margin: 0;
     }
@@ -593,15 +636,17 @@ header video {
         text-align: left;
     }
 
-    .kenali-kami{
+    .kenali-kami {
         margin-top: 15px;
         padding: 20px;
     }
-    .kenali-kami .tbl-kenali{
+
+    .kenali-kami .tbl-kenali {
         padding: 8px 20px;
         font-size: 14px;
 
     }
+
     /* Rumah */
     .container-rumah {
         flex-direction: column;

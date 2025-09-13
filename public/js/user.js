@@ -62,19 +62,30 @@ function showContent(contentId, event) {
     if (section) {
         section.classList.add('active');
     }
+
+    // ✅ Simpan ke localStorage supaya tetap di section ini meski reload
+    localStorage.setItem("lastSection", contentId);
 }
 
+// ==============================
 // Saat halaman selesai dimuat
+// ==============================
 document.addEventListener('DOMContentLoaded', function() {
-    // Tampilkan konten default
-    const menuKonten = document.getElementById('menu-konten');
-    if (menuKonten) {
-        menuKonten.classList.add('active');
-    }
+    // Ambil section terakhir dari localStorage
+    const lastSection = localStorage.getItem("lastSection") || "menu-konten";
 
-    // Tandai menu pertama sebagai aktif
-    const firstMenuItem = document.querySelector('.menu-item');
-    if (firstMenuItem) {
-        firstMenuItem.classList.add('active');
+    // Tampilkan section terakhir
+    showContent(lastSection);
+
+    // Tandai menu yang sesuai
+    const activeMenu = document.querySelector(`.menu-item a[onclick*="${lastSection}"]`);
+    if (activeMenu) {
+        activeMenu.closest('.menu-item').classList.add('active');
+    } else {
+        // fallback → tandai menu pertama
+        const firstMenuItem = document.querySelector('.menu-item');
+        if (firstMenuItem) {
+            firstMenuItem.classList.add('active');
+        }
     }
 });

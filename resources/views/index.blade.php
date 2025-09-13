@@ -32,7 +32,8 @@
             <a href="{{ route('layanan') }}" class="{{ Request::routeIs('layanan') ? 'active' : '' }}">Layanan</a>
             <a href="{{ route('tentang') }}" class="{{ Request::routeIs('tentang') ? 'active' : '' }}">Tentang</a>
             <a href="{{ route('kontak') }}" class="{{ Request::routeIs('kontak') ? 'active' : '' }}">Kontak</a>
-            <a href="{{ route('login.form') }}" class="tbl-login masuk-mobile {{ Request::routeIs('login.form') ? 'active' : '' }}">Masuk / Daftar</a>
+            <a href="{{ route('login.form') }}"
+                class="tbl-login masuk-mobile {{ Request::routeIs('login.form') ? 'active' : '' }}">Masuk / Daftar</a>
         </div>
 
         <div class="masuk masuk-dekstop" id="navMasuk">
@@ -93,6 +94,11 @@
                 <h3 data-aos="fade-left" data-aos-delay="300" data-aos-duration="750">Kantor Notaris & PPAT Yanti
                     Haryanti, S.H. , M.Kn</h3>
                 <div class="jalan" data-aos="fade-right" data-aos-delay="300" data-aos-duration="750">
+                    <div class="map">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d494.6362392426849!2d108.1457826!3d-7.3437997!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6f570c31185273%3A0x55d0000b4a97158d!2sKantor%20NOTARIS%20%26%20PPAT%20YANTI%20HARYANTI%2C%20S.H.%2C%20M.Kn!5e0!3m2!1sen!2sid!4v1757569367226!5m2!1sen!2sid"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
                     <p><i class='bx bx-location-plus'> Jl.Raya Singaparna ,Kp.Desa Kolot Nomor 8</i></p>
                     <p class="desa">Desa Cikunir, Kecamatan Singaparna,Kabupaten Tasikmalaya</p>
                 </div>
@@ -169,6 +175,8 @@
     <!-- Akhiran Layanan -->
 
 
+
+
     <!-- Footer -->
     <div class="container-footer">
         <div class="footer kiri">
@@ -180,20 +188,22 @@
             </ul>
         </div>
         <div class="footer tengah">
-            <ul>
-                <li>Kontak</li>
-                <li>Kontak</li>
-                <li>Kontak</li>
-                <li>Kontak</li>
-            </ul>
+                <p class="title">Link</p>
+                <div class="links">
+                    <img src="{{ asset('img/bpn.png') }}">
+                    <img src="{{ asset('img/kemenkum.png') }}">
+                    <img src="{{ asset('img/oss.png') }}">
+                    <img src="{{ asset('img/ippat.png') }}">
+                
+            </div>
         </div>
-        <div class="footer kanan">
+        <!-- <div class="footer kanan">
             <ul>
                 <li>Sosmed</li>
                 <li>Sosmed</li>
                 <li>Sosmed</li>
             </ul>
-        </div>
+        </div> -->
     </div>
 
 

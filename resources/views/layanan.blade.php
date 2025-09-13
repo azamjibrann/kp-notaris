@@ -72,12 +72,6 @@
             <div class="pembuatan">
                 <p>Pembuatan Akta-Akta Notaril Lainnya</p>
             </div>
-            {{-- <div class="pembuatan">
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum, sequi.</p>
-            </div>
-            <div class="pembuatan">
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum, sequi.</p>
-            </div> --}}
         </div>
     </div>
     <!-- Akhir Layanan Notaris -->
@@ -88,41 +82,29 @@
         <h3>Layanan PPAT</h3>
         <div class="konten-layanan">
             <div class="pembuatan">
-                <p>Pembuatan Akta Koperasi</p>
+                <p>Akta Jual Beli</p>
             </div>
             <div class="pembuatan">
-                <p>Pembuatan CV </p>
+                <p>Akta Hibah </p>
             </div>
             <div class="pembuatan">
-                <p>Pembuatan Akta PT</p>
+                <p>Akta Pemasukan Kedalam Perusahaan</p>
                 </div>
             <div class="pembuatan">
-                <p>Pembuatan Akta Yayasan</p>
+                <p>Akta Pemberian Hak Guna Bangunan/Hak Pakai Atas Hak Milik</p>
                 </div>
             <div class="pembuatan">
-                <p>Pembuatan Akta Perkumpulan Warmeking</p>
+                <p>Akta Pembagian Hak Bersama</p>
                 </div>
             <div class="pembuatan">
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum, sequi.</p>
+                <p>Surat Kuasa Membebankan Hak Tanggungan</p>
             </div>
             <div class="pembuatan">
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum, sequi.</p>
+                <p>Akta Pemberian Hak Tanggungan</p>
             </div>
             <div class="pembuatan">
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum, sequi.</p>
-            </div>
-            <div class="pembuatan">
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum, sequi.</p>
-            </div>
-            <div class="pembuatan">
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum, sequi.</p>
-            </div>
-            <div class="pembuatan">
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum, sequi.</p>
-            </div>
-            <div class="pembuatan">
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum, sequi.</p>
-            </div>
+                <p>Akta Tukar Menukar</p>
+            </div>          
         </div>
     </div>
     <!-- Akhir Layanan PPAT -->
@@ -147,27 +129,6 @@
             <div class="pembuatan">
                 <p>Pembuatan Akta Perkumpulan Warmeking</p>
                 </div>
-            <div class="pembuatan">
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum, sequi.</p>
-            </div>
-            <div class="pembuatan">
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum, sequi.</p>
-            </div>
-            <div class="pembuatan">
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum, sequi.</p>
-            </div>
-            <div class="pembuatan">
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum, sequi.</p>
-            </div>
-            <div class="pembuatan">
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum, sequi.</p>
-            </div>
-            <div class="pembuatan">
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum, sequi.</p>
-            </div>
-            <div class="pembuatan">
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum, sequi.</p>
-            </div>
         </div>
     </div>
     <!-- Akhir Layanan Lainnya -->

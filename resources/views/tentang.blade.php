@@ -74,7 +74,7 @@
     <!-- Profil Ketua -->
     <div class="container-profil">
         <div class="judul-ketua">
-            <h2 data-aos="zoom-in" data-aos-delay="60" data-aos-duration="600">Profil Ketua</h2>
+            <h2 data-aos="zoom-in" data-aos-delay="60" data-aos-duration="600">Profil Notaris PPAT</h2>
         </div>
         <div class="profil-ketua">
             <div class="profil-teks">
