@@ -145,6 +145,7 @@
             <!-- Konten utama untuk menu-konten -->
             <div id="menu-konten" class="content-section">
                 <h1 class="text-xl md:text-2xl font-bold text-gray-800 mb-4 md:mb-6">Notaris & PPAT</h1>
+
                 <div class="card p-4 md:p-8 bg-white rounded shadow">
                     <h2 class="text-lg md:text-xl font-semibold mb-4">Profil Saya</h2>
 
@@ -158,6 +159,7 @@
                         <span class="font-semibold">Email:</span> {{ Auth::user()->email }}
                     </p>
                 </div>
+                
             </div>
 
             <!-- Other Content Sections -->

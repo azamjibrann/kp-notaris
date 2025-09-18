@@ -187,8 +187,8 @@
                     <!-- Item Formulir Konsul -->
                     <div class="flex grow flex-col card p-3">
                         <h2 class="text-lg md:text-xl font-bold mb-2">Formulir Konsultasi</h2>
-                        <input type="text" id="searchInput" placeholder="Cari..."
-                            class="border p-2 mb-3 rounded-lg my-2 text-sm">
+                        {{-- <input type="text" id="searchInput" placeholder="Cari..."
+                            class="border p-2 mb-3 rounded-lg my-2 text-sm"> --}}
 
                         <div class="overflow-x-auto">
                             <table class="table-auto border-collapse border border-gray-300 w-full">
@@ -461,11 +461,23 @@
                 {{-- List Galeri --}}
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
                     @foreach ($photos as $photo)
-                    <div class="bg-white shadow-md rounded-lg overflow-hidden">
-                        <img src="{{ asset('storage/' . $photo->image) }}" class="w-full h-40 object-cover" />
-                        <p class="p-3 text-gray-800 text-sm">{{ $photo->description }}</p>
-                    </div>
-                    @endforeach
+    <div class="bg-white shadow-md rounded-lg overflow-hidden relative">
+        <img src="{{ asset('storage/' . $photo->image) }}" class="w-full h-40 object-cover" />
+        <p class="p-3 text-gray-800 text-sm">{{ $photo->description }}</p>
+
+        {{-- Tombol Hapus --}}
+        <form action="{{ route('photos.destroy', $photo->id) }}" method="POST"
+              onsubmit="return confirm('Yakin ingin menghapus foto ini?')"
+              class="absolute top-2 right-2">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="bg-red-500 text-white p-1 rounded text-xs">
+                <i class="bx bx-trash"></i>
+            </button>
+        </form>
+    </div>
+@endforeach
+
                 </div>
             </div>
 

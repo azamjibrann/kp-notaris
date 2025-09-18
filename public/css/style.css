@@ -448,7 +448,7 @@ header video {
     font-weight: bold;
     text-align: center;
     margin-top: 50px;
-    font-size: 23px;  
+    font-size: 23px;
 }
 
 .socials {
@@ -471,7 +471,26 @@ header video {
     gap: 30px;
     object-fit: cover;
 }
-
+/* WA */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    z-index: 1000;
+}
+.whatsapp-float:hover {
+    background-color: #1ebe5c;
+}
 
 /* humberger */
 .hamburger {

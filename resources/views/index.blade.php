@@ -13,6 +13,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 </head>
 
 <body>
@@ -175,7 +177,9 @@
     <!-- Akhiran Layanan -->
 
 
-
+<a href="https://wa.me/6281323562655" target="_blank" class="whatsapp-float">
+    <i class="fab fa-whatsapp"></i>
+</a>
 
     <!-- Footer -->
     <div class="container-footer">
@@ -187,15 +191,24 @@
                 <li class='bx bx-envelope'> notaris@gmail.com</li>
             </ul>
         </div>
-        <div class="footer tengah">
-                <p class="title">Link</p>
-                <div class="links">
-                    <img src="{{ asset('img/bpn.png') }}">
-                    <img src="{{ asset('img/kemenkum.png') }}">
-                    <img src="{{ asset('img/oss.png') }}">
-                    <img src="{{ asset('img/ippat.png') }}">
-                
-            </div>
+       <div class="footer tengah">
+    <p class="title">Link</p>
+    <div class="links">
+        <a href="https://www.atrbpn.go.id/" target="_blank">
+            <img src="{{ asset('img/bpn.png') }}" alt="BPN">
+        </a>
+        <a href="https://portal.ahu.go.id/" target="_blank">
+            <img src="{{ asset('img/kemenkum.png') }}" alt="Kemenkumham">
+        </a>
+        <a href="https://oss.go.id/" target="_blank">
+            <img src="{{ asset('img/oss.png') }}" alt="OSS">
+        </a>
+        <a href="https://ppippat.org/" target="_blank">
+            <img src="{{ asset('img/ippat.png') }}" alt="IPPAT">
+        </a>
+    </div>
+</div>
+
         </div>
         <!-- <div class="footer kanan">
             <ul>

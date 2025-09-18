@@ -49,4 +49,21 @@ class PhotoController extends Controller
         $photos = Photo::latest()->get();
         return view('user.galeri', compact('photos'));
     }
+
+    // hapus
+    public function destroy($id)
+{
+    $photo = Photo::findOrFail($id);
+
+    // Hapus file dari storage kalau ada
+    if ($photo->image && Storage::exists('public/' . $photo->image)) {
+        Storage::delete('public/' . $photo->image);
+    }
+
+    // Hapus dari database
+    $photo->delete();
+
+    return redirect()->back()->with('success', 'Foto berhasil dihapus!');
+}
+
 }
