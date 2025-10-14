@@ -151,7 +151,7 @@
                 <form action="{{ route('logout') }}" method="POST" class="m-0">
                     @csrf
                     <button type="submit"
-                        class="bg-red-600 text-white px-4 py-2 rounded-lg font-medium w-full text-sm hover:bg-red-700 flex items-center justify-center">
+                        class="bg-blue-800 text-white px-4 py-2 rounded-lg font-medium w-full text-sm hover:bg-blue-900 flex items-center justify-center">
                         <i class='bx bx-log-out-circle mr-1'></i> Logout
                     </button>
                 </form>
