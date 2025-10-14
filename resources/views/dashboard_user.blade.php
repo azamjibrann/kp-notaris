@@ -42,7 +42,7 @@
 
 /* --- Tombol Logout --- */
 .logout-container {
-    margin-top: 18rem;
+    margin-top: 24rem;
     padding: auto;
     text-align: center;
     background: transparent;
