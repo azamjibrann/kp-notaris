@@ -72,7 +72,7 @@
 
     <div class="grid md:grid-cols-[280px_1fr] grid-cols-1 min-h-screen max-w-full overflow-hidden">
         <!-- Sidebar -->
-        <div id="sidebar" class="sidebar-bg px-4 py-6 flex flex-col min-h-screen md:relative sidebar-mobile">
+        <div id="sidebar" class="sidebar-bg px-4 py-6 flex flex-col justify-between h-screen overflow-y-auto md:relative sidebar-mobile">
             <!-- Close button for mobile -->
             <div class="md:hidden flex justify-end mb-4">
                 <button onclick="closeMobileMenu()" class="text-white text-xl">
