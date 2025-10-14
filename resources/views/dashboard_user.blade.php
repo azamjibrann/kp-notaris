@@ -25,20 +25,57 @@
             display: none !important;
         }
 
-        /* Background sidebar */
+        /* === SIDEBAR STYLING === */
         .sidebar-bg {
             background: linear-gradient(180deg, #1e40af, #2563eb);
             color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* pisahkan menu dan logout */
+            height: 100vh; /* sidebar penuh */
+            padding: 1.5rem 1rem;
         }
-
-        /* Logout sticky bawah */
+        
+        /* === MENU BUTTONS === */
+        .menu-item {
+            display: block;
+            width: 100%;
+            margin-bottom: 0.75rem;
+            padding: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 12px;
+            text-align: left;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-item:hover,
+        .menu-item.active {
+            background-color: rgba(255, 255, 255, 0.25);
+        }
+        
+        /* === LOGOUT BUTTON === */
         .logout-container {
-            position: sticky;
-            bottom: 0;
             background: none;
-            padding: 1rem 0;
+            margin-top: auto; /* dorong ke bawah */
+            padding-bottom: 1.5rem; /* beri jarak dari tepi bawah */
         }
-
+        
+        .logout-container button {
+            background-color: #1e3a8a; /* biru tua */
+            color: white;
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 12px;
+            font-weight: 500;
+            text-align: center;
+            transition: background 0.3s ease;
+        }
+        
+        .logout-container button:hover {
+            background-color: #1d4ed8; /* sedikit lebih terang saat hover */
+        }
+        
         /* === MOBILE MODE === */
         @media (max-width: 768px) {
             .sidebar-mobile {
@@ -51,11 +88,11 @@
                 overflow-y: auto;
                 z-index: 1000;
             }
-
+        
             .sidebar-mobile.active {
                 left: 0;
             }
-
+        
             .overlay {
                 position: fixed;
                 top: 0;
@@ -66,7 +103,7 @@
                 display: none;
                 z-index: 999;
             }
-
+        
             .overlay.active {
                 display: block;
             }
