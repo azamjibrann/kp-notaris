@@ -1,106 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     @vite(['resources/css/app.css', 'resources/css/custom.css', 'resources/js/app.js'])
     <script src="//unpkg.com/alpinejs" defer></script>
-</head>
 
-<style>
-    .content-section {
-        display: none;
-    }
-
-    .content-section.active {
-        display: block;
-    }
-
-    .menu-item.active {
-        background-color: rgba(255, 255, 255, 0.2);
-    }
-
-    [x-cloak] {
-        display: none !important;
-    }
-
-    /* Sidebar background */
-    .sidebar-bg {
-        background: linear-gradient(180deg, #1e40af, #2563eb);
-    }
-
-    /* Mobile menu toggle */
-    @media (max-width: 768px) {
-        .sidebar-mobile {
-            position: fixed;
-            top: 0;
-            left: -280px;
-            width: 280px;
-            height: 100vh;
-            z-index: 50;
-            transition: left 0.3s ease;
-            overflow-y: auto;
-            background: linear-gradient(180deg, #1e40af, #2563eb);
-            padding-bottom: 6rem; /* beri ruang ekstra agar tombol logout terlihat */
-        }
-
-        .sidebar-mobile.active {
-            left: 0;
-        }
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 40;
+    <style>
+        /* Hide inactive content sections */
+        .content-section {
             display: none;
         }
-
-        .overlay.active {
+        .content-section.active {
             display: block;
         }
-    }
 
-    /* Tombol logout fix agar selalu di bawah di HP */
-    .logout-container {
-        position: sticky;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.1);
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-    }
-</style>
+        /* Active menu item */
+        .menu-item.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        [x-cloak] {
+            display: none !important;
+        }
+
+        /* Sidebar gradient background */
+        .sidebar-bg {
+            background: linear-gradient(180deg, #1e40af, #2563eb);
+            position: relative;
+            z-index: 20; /* tidak menutupi konten utama */
+        }
+
+        /* Tombol logout selalu di bawah */
+        .logout-container {
+            position: sticky;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.1);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        /* ===== Mobile Mode ===== */
+        @media (max-width: 768px) {
+            .sidebar-mobile {
+                position: fixed;
+                top: 0;
+                left: -280px;
+                width: 280px;
+                height: 100vh;
+                z-index: 9999; /* tinggi hanya di mobile */
+                transition: left 0.3s ease;
+                overflow-y: auto;
+                background: linear-gradient(180deg, #1e40af, #2563eb);
+                padding-bottom: 6rem;
+            }
+
+            .sidebar-mobile.active {
+                left: 0;
+            }
+
+            /* Overlay yang muncul di belakang sidebar */
+            .overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 9998;
+                display: none;
+            }
+
+            .overlay.active {
+                display: block;
+            }
+        }
+    </style>
+</head>
 
 <body class="p-0 m-0 box-border bg-gray-50">
-    <!-- Mobile Menu Button -->
-    <div class="md:hidden fixed top-4 left-4 z-50">
+
+    <!-- Tombol Menu untuk Mobile -->
+    <div class="md:hidden fixed top-4 left-4 z-[10000]">
         <button onclick="toggleMobileMenu()" class="bg-blue-600 text-white p-2 rounded-md shadow-lg">
             <i class='bx bx-menu text-xl'></i>
         </button>
     </div>
 
-    <!-- Mobile Overlay -->
+    <!-- Overlay -->
     <div id="mobileOverlay" class="overlay" onclick="closeMobileMenu()"></div>
 
+    <!-- Grid utama -->
     <div class="grid md:grid-cols-[280px_1fr] grid-cols-1 min-h-screen max-w-full overflow-hidden">
-        <!-- Sidebar -->
+
+        <!-- SIDEBAR -->
         <div id="sidebar"
             class="sidebar-bg px-4 py-6 flex flex-col justify-between h-screen md:relative sidebar-mobile">
 
-            <!-- Close button for mobile -->
+            <!-- Tombol close di mobile -->
             <div class="md:hidden flex justify-end mb-4">
                 <button onclick="closeMobileMenu()" class="text-white text-2xl">
                     <i class='bx bx-x'></i>
                 </button>
             </div>
 
-            <!-- Header -->
+            <!-- Header sidebar -->
             <div class="mb-6">
                 <div class="flex items-center mb-6">
                     <div class="w-6 h-6 bg-white rounded mr-2 flex items-center justify-center">
@@ -147,25 +154,25 @@
                 </div>
             </div>
 
-            <!-- Logout Button -->
+            <!-- Logout -->
             <div class="logout-container mt-4">
                 <form action="{{ route('logout') }}" method="POST" style="margin: 0;">
                     @csrf
                     <button type="submit"
-                        class="logout-btn-custom bg-red-600 text-white px-4 py-2 rounded-lg font-medium w-full text-sm hover:bg-red-700">
+                        class="bg-red-600 text-white px-4 py-2 rounded-lg font-medium w-full text-sm hover:bg-red-700 flex items-center justify-center">
                         <i class='bx bx-log-out-circle mr-1'></i> Logout
                     </button>
                 </form>
             </div>
         </div>
 
-        <!-- Main Content Area -->
+        <!-- AREA KONTEN -->
         <div class="bg-gray-50 p-2 md:p-4 overflow-auto max-h-screen pt-16 md:pt-4">
-            {{-- Konten kamu di sini tetap sama --}}
+            {{-- Konten utama kamu --}}
         </div>
     </div>
 
-    {{-- SCRIPT --}}
+    <!-- SCRIPT -->
     <script>
         function toggleMobileMenu() {
             const sidebar = document.getElementById('sidebar');
@@ -181,10 +188,20 @@
             overlay.classList.remove('active');
         }
 
-        window.addEventListener('resize', function () {
+        // Tutup sidebar otomatis saat resize ke desktop
+        window.addEventListener('resize', () => {
             if (window.innerWidth >= 768) {
                 closeMobileMenu();
             }
+        });
+
+        // Tutup sidebar otomatis saat klik salah satu menu
+        document.querySelectorAll('#sidebar a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 768) {
+                    closeMobileMenu();
+                }
+            });
         });
     </script>
 
