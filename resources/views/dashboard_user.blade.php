@@ -42,8 +42,8 @@
 
 /* --- Tombol Logout --- */
 .logout-container {
-    margin-top: auto;
-    padding: 0;
+    margin-top: 12rem;
+    padding: auto;
     text-align: center;
     background: transparent;
 }
@@ -189,9 +189,7 @@
                     </div>
                 </div>
                 <!-- logout -->
-                
-            </div>
-            <div class="mt-1 logout-container">
+                <div class="mt-10 logout-container">
                     <form action="{{ route('logout') }}" method="POST" class="m-0">
                         @csrf
                         <button type="submit"
@@ -200,6 +198,8 @@
                         </button>
                     </form>
                 </div>
+            </div>
+            
         </div>
 
         <!-- Main Content Area -->
