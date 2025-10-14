@@ -33,9 +33,10 @@
             top: 0;
             left: -280px;
             width: 280px;
-            height: 100vh;
+            min-height: 100vh;
             z-index: 50;
             transition: left 0.3s ease;
+            overflow-y: auto;
         }
 
         .sidebar-mobile.active {
