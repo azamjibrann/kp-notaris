@@ -26,70 +26,72 @@
         <!-- Sidebar -->
         <div id="sidebar" class="sidebar-bg px-4 py-6 flex flex-col min-h-screen md:relative sidebar-mobile">
             <!-- Close button for mobile -->
-            <div class="md:hidden flex justify-end mb-4">
-                <button onclick="closeMobileMenu()" class="text-white text-xl">
-                    <i class='bx bx-x'></i>
-                </button>
-            </div>
-
-            <!-- Header -->
-            <div class="mb-6">
-                <div class="flex items-center mb-6">
-                    <div class="w-6 h-6 bg-white rounded mr-2 flex items-center justify-center">
-                        <i class='bx bx-file text-blue-600 text-sm'></i>
-                    </div>
-                    <span class="text-white text-sm font-bold">NOTARIS/PPAT</span>
-                </div>
-
-                <h2 class="text-white text-xl font-bold mb-4">Dashboard</h2>
-            </div>
-
-            <!-- Menu Items -->
-            <div class="space-y-2 flex-1">
-                <div class="menu-item active rounded-full border-2 border-white">
-                    <a href="#" onclick="showContent('menu-konten', event); closeMobileMenu();"
-                        class="flex items-center text-white no-underline px-4 py-2 rounded-full">
-                        <i class='bx bxs-dashboard text-sm mr-2'></i>
-                        <span class="text-sm">Menu</span>
-                    </a>
-                </div>
-
-                <div class="menu-item rounded-full border-2 border-white">
-                    <a href="#" onclick="showContent('layanan', event); closeMobileMenu();"
-                        class="flex items-center text-white no-underline px-4 py-2 rounded-full">
-                        <i class='bx bx-notepad text-sm mr-2'></i>
-                        <span class="text-sm">Layanan</span>
-                    </a>
-                </div>
-
-                <div class="menu-item rounded-full border-2 border-white">
-                    <a href="#" onclick="showContent('konsul', event); closeMobileMenu();"
-                        class="flex items-center text-white no-underline px-4 py-2 rounded-full">
-                        <i class='bx bx-edit text-sm mr-2'></i>
-                        <span class="text-sm">Form Konsul</span>
-                    </a>
-                </div>
-
-                <div class="menu-item rounded-full border-2 border-white">
-                    <a href="#" onclick="showContent('galeri', event); closeMobileMenu();"
-                        class="flex items-center text-white no-underline px-4 py-2 rounded-full">
-                        <i class='bx bxs-image text-sm mr-2'></i>
-                        <span class="text-sm">Galeri</span>
-                    </a>
-                </div>
-
-            </div>
-
-            <!-- Logout Button -->
-            <div class="mt-4">
-                <form action="{{ route('logout') }}" method="POST" style="margin: 0;">
-                    @csrf
-                    <button type="submit"
-                        class="logout-btn-custom text-white px-4 py-2 rounded-lg font-medium w-full text-sm">
-                        Logout
+            <div>
+                <div class="md:hidden flex justify-end mb-4">
+                    <button onclick="closeMobileMenu()" class="text-white text-xl">
+                        <i class='bx bx-x'></i>
                     </button>
-                </form>
+                </div>
+
+                <!-- Header -->
+                <div class="mb-6">
+                    <div class="flex items-center mb-6">
+                        <div class="w-6 h-6 bg-white rounded mr-2 flex items-center justify-center">
+                            <i class='bx bx-file text-blue-600 text-sm'></i>
+                        </div>
+                        <span class="text-white text-sm font-bold">NOTARIS/PPAT</span>
+                    </div>
+
+                    <h2 class="text-white text-xl font-bold mb-4">Dashboard</h2>
+                </div>
+
+                <!-- Menu Items -->
+                <div class="space-y-2 flex-1">
+                    <div class="menu-item active rounded-full border-2 border-white">
+                        <a href="#" onclick="showContent('menu-konten', event); closeMobileMenu();"
+                            class="flex items-center text-white no-underline px-4 py-2 rounded-full">
+                            <i class='bx bxs-dashboard text-sm mr-2'></i>
+                            <span class="text-sm">Menu</span>
+                        </a>
+                    </div>
+
+                    <div class="menu-item rounded-full border-2 border-white">
+                        <a href="#" onclick="showContent('layanan', event); closeMobileMenu();"
+                            class="flex items-center text-white no-underline px-4 py-2 rounded-full">
+                            <i class='bx bx-notepad text-sm mr-2'></i>
+                            <span class="text-sm">Layanan</span>
+                        </a>
+                    </div>
+
+                    <div class="menu-item rounded-full border-2 border-white">
+                        <a href="#" onclick="showContent('konsul', event); closeMobileMenu();"
+                            class="flex items-center text-white no-underline px-4 py-2 rounded-full">
+                            <i class='bx bx-edit text-sm mr-2'></i>
+                            <span class="text-sm">Form Konsul</span>
+                        </a>
+                    </div>
+
+                    <div class="menu-item rounded-full border-2 border-white">
+                        <a href="#" onclick="showContent('galeri', event); closeMobileMenu();"
+                            class="flex items-center text-white no-underline px-4 py-2 rounded-full">
+                            <i class='bx bxs-image text-sm mr-2'></i>
+                            <span class="text-sm">Galeri</span>
+                        </a>
+                    </div>
+
+                </div>
+                <div class="mt-4">
+                    <form action="{{ route('logout') }}" method="POST" style="margin: 0;">
+                        @csrf
+                        <button type="submit"
+                            class="logout-btn-custom text-white px-4 py-2 rounded-lg font-medium w-full text-sm">
+                            Logout
+                        </button>
+                    </form>
+                </div>
             </div>
+            <!-- Logout Button -->
+            
         </div>
 
         <!-- Main Content Area -->
