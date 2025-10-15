@@ -80,7 +80,7 @@
                     </div>
 
                 </div>
-                <div class="mt-4">
+                <div class="mt-4 logout-container">
                     <form action="{{ route('logout') }}" method="POST" style="margin: 0;">
                         @csrf
                         <button type="submit"
