@@ -23,6 +23,13 @@
     transform: translateX(5px);
 }
 
+.logout-container {
+    margin-top: 20rem;
+    padding: 2rem;
+    text-align: center;
+    background: transparent;
+}
+
 .menu-item.active {
     background: rgba(255, 255, 255, 0.2);
 }
