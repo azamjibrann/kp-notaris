@@ -65,7 +65,7 @@
     <!-- Kenali Kami -->
     <div class="container-kenali">
         <div class="gambar">
-            <img src="img/kantor.png" alt="" data-aos="zoom-out" data-aos-delay="300" data-aos-duration="750">
+            <img src="img/ibuy.png" alt="" data-aos="zoom-out" data-aos-delay="300" data-aos-duration="750">
         </div>
         <div class="kata-gambar">
             <h3 data-aos="fade-left" data-aos-delay="100" data-aos-duration="750">Kenali Lebih Dekat Kantor Kami</h3>
